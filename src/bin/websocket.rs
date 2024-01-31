@@ -30,6 +30,11 @@ async fn main() {
     tools.push(tool);
   }
 
+  println!("Loaded {} tools", tools.len());
+  println!("Supervisor token: {}", *shared::SUPERVISOR_TOKEN);
+  println!("OpenAi API key: {}", *shared::OPENAI_API_KEY);
+  println!("Socket port: {}", *shared::SOCKET_PORT);
+
   let instructions = std::fs::read_to_string("resources/instructions.txt").expect("Error reading instructions");
   let env = Environment::new(tools, instructions);
   let runtime = env.runtime().await.expect("Error creating runtime");
