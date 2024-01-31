@@ -9,11 +9,12 @@ init: false
 options:
   openai_api_key: random_value
 schema:
-  openai_api_key: string
+  openai_api_key: password
 ports:
   10200/tcp: 10200
 homeassistant: 2023.12.0
 homeassistant_api: true
+# image: ghcr.io/oleander/addon-linus:main-X64
 legacy: true
 
 
