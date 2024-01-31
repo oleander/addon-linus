@@ -1,5 +1,5 @@
 ---
-version: 1.0.4
+version: 1.0.5
 slug: linus
 name: Linus
 description: Linus OpenAI pipeline
@@ -14,5 +14,6 @@ ports:
 # image:  docker.io/library/{arch}-addon-linus
 homeassistant: 2023.12.0
 homeassistant_api: true
+legacy: true
 
 
