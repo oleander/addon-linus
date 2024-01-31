@@ -31,7 +31,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v5
         with:
-          images: ${{ env.REGISTRY }}/amd64-${{ env.IMAGE_NAME }}
+          images: ${{ env.REGISTRY }}/oleander/amd64-addon-linus
           flavor: latest=true
 
       - name: Set up Docker Buildx
