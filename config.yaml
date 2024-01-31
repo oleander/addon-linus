@@ -7,7 +7,7 @@ url: https://github.com/oleander/ha-openai-rs
 arch: [amd64]
 init: false
 schema:
-  openai_api_key: password
+  openai_api_key: string
 ports:
   10200/tcp: 10200
 homeassistant: 2023.12.0

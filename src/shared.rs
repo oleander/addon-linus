@@ -2,7 +2,7 @@ use std::env::var;
 
 lazy_static::lazy_static! {
   pub static ref SUPERVISOR_TOKEN: String = var("SUPERVISOR_TOKEN").expect("please set up the SUPERVISOR_TOKEN env variable before running this");
-  pub static ref OPENAI_API_KEY: String = var("OPENAI_API_KEY").expect("please set up the OPENAI_API_KEY env variable before running this");
+  pub static ref OPENAI_API_KEY: String = var("OPTIONS_OPENAI_API_KEY").expect("please set up the OPENAI_API_KEY env variable before running this");
   pub static ref SOCKET_PORT: String = var("SOCKET_PORT").expect("please set up the SOCKET_PORT env variable before running this");
 }
 
