@@ -10,8 +10,6 @@ ENV CARGO_BUILD_TARGET_DIR=/target
 ENV SOCKET_PORT=${SOCKET_PORT}
 
 
-RUN test -n "$OPENAI_API_KEY" || exit 1
-
 WORKDIR /app
 
 RUN cargo install cargo-build-deps
