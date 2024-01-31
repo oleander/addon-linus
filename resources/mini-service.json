@@ -1,0 +1,12 @@
+{
+  "id": 211,
+  "type": "call_service",
+  "domain": "light",
+  "service": "toggle",
+  "target": {
+    "entity_id": "light.bakrum_liten_lampa_lampa"
+  },
+  "service_data": {
+    "brightness": 10
+  }
+}

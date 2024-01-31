@@ -1,0 +1,5645 @@
+[
+  {
+    "type": "function",
+    "function": {
+      "name": "input_datetime.reload",
+      "description": "Reloads helpers from the YAML-configuration.",
+      "parameters": {
+        "properties": {
+          "data": { "properties": {}, "type": "object" },
+          "domain": { "enum": ["input_datetime"], "type": "string" },
+          "service": { "enum": ["reload"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "input_datetime.set_datetime",
+      "description": "Sets the date and/or time.",
+      "parameters": {
+        "properties": {
+          "data": {
+            "properties": {
+              "date": { "example": "\"2019-04-20\"", "type": "string" },
+              "datetime": {
+                "example": "\"2019-04-20 05:04:20\"",
+                "type": "string"
+              },
+              "time": { "example": "\"05:04:20\"", "type": "string" },
+              "timestamp": { "type": ["null", "string"] }
+            },
+            "type": "object"
+          },
+          "domain": { "enum": ["input_datetime"], "type": "string" },
+          "service": { "enum": ["set_datetime"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "mqtt.publish",
+      "description": "Publishes a message to an MQTT topic.",
+      "parameters": {
+        "properties": {
+          "data": {
+            "properties": {
+              "payload": { "example": "This is great", "type": "string" },
+              "payload_template": {
+                "example": "{{ states('sensor.temperature') }}",
+                "type": "string"
+              },
+              "qos": { "type": ["null", "string"] },
+              "retain": { "type": ["null", "string"] },
+              "topic": { "example": "/homeassistant/hello", "type": "string" }
+            },
+            "type": "object"
+          },
+          "domain": { "enum": ["mqtt"], "type": "string" },
+          "service": { "enum": ["publish"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "mqtt.dump",
+      "description": "Writes all messages on a specific topic into the `mqtt_dump.txt` file in your configuration folder.",
+      "parameters": {
+        "properties": {
+          "data": {
+            "properties": {
+              "duration": { "type": ["null", "string"] },
+              "topic": { "example": "OpenZWave/#", "type": "string" }
+            },
+            "type": "object"
+          },
+          "domain": { "enum": ["mqtt"], "type": "string" },
+          "service": { "enum": ["dump"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "mqtt.reload",
+      "description": "Reloads MQTT entities from the YAML-configuration.",
+      "parameters": {
+        "properties": {
+          "data": { "properties": {}, "type": "object" },
+          "domain": { "enum": ["mqtt"], "type": "string" },
+          "service": { "enum": ["reload"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "climate.set_temperature",
+      "description": "Sets target temperature.",
+      "parameters": {
+        "properties": {
+          "data": {
+            "properties": {
+              "hvac_mode": { "type": ["null", "string"] },
+              "target_temp_high": { "type": ["null", "string"] },
+              "target_temp_low": { "type": ["null", "string"] },
+              "temperature": { "type": ["null", "string"] }
+            },
+            "type": "object"
+          },
+          "domain": { "enum": ["climate"], "type": "string" },
+          "service": { "enum": ["set_temperature"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "climate.set_preset_mode",
+      "description": "Sets preset mode.",
+      "parameters": {
+        "properties": {
+          "data": {
+            "properties": {
+              "preset_mode": { "example": "away", "type": "string" }
+            },
+            "type": "object"
+          },
+          "domain": { "enum": ["climate"], "type": "string" },
+          "service": { "enum": ["set_preset_mode"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "climate.set_hvac_mode",
+      "description": "Sets HVAC operation mode.",
+      "parameters": {
+        "properties": {
+          "data": {
+            "properties": { "hvac_mode": { "type": ["null", "string"] } },
+            "type": "object"
+          },
+          "domain": { "enum": ["climate"], "type": "string" },
+          "service": { "enum": ["set_hvac_mode"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "climate.turn_off",
+      "description": "Turns climate device off.",
+      "parameters": {
+        "properties": {
+          "data": { "properties": {}, "type": "object" },
+          "domain": { "enum": ["climate"], "type": "string" },
+          "service": { "enum": ["turn_off"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "climate.set_aux_heat",
+      "description": "Turns auxiliary heater on/off.",
+      "parameters": {
+        "properties": {
+          "data": {
+            "properties": { "aux_heat": { "type": ["null", "string"] } },
+            "type": "object"
+          },
+          "domain": { "enum": ["climate"], "type": "string" },
+          "service": { "enum": ["set_aux_heat"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "climate.turn_on",
+      "description": "Turns climate device on.",
+      "parameters": {
+        "properties": {
+          "data": { "properties": {}, "type": "object" },
+          "domain": { "enum": ["climate"], "type": "string" },
+          "service": { "enum": ["turn_on"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "climate.set_fan_mode",
+      "description": "Sets fan operation mode.",
+      "parameters": {
+        "properties": {
+          "data": {
+            "properties": {
+              "fan_mode": { "example": "low", "type": "string" }
+            },
+            "type": "object"
+          },
+          "domain": { "enum": ["climate"], "type": "string" },
+          "service": { "enum": ["set_fan_mode"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "climate.set_swing_mode",
+      "description": "Sets swing operation mode.",
+      "parameters": {
+        "properties": {
+          "data": {
+            "properties": {
+              "swing_mode": { "example": "horizontal", "type": "string" }
+            },
+            "type": "object"
+          },
+          "domain": { "enum": ["climate"], "type": "string" },
+          "service": { "enum": ["set_swing_mode"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "climate.set_humidity",
+      "description": "Sets target humidity.",
+      "parameters": {
+        "properties": {
+          "data": {
+            "properties": { "humidity": { "type": ["null", "string"] } },
+            "type": "object"
+          },
+          "domain": { "enum": ["climate"], "type": "string" },
+          "service": { "enum": ["set_humidity"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "humidifier.set_humidity",
+      "description": "Sets the target humidity.",
+      "parameters": {
+        "properties": {
+          "data": {
+            "properties": { "humidity": { "type": ["null", "string"] } },
+            "type": "object"
+          },
+          "domain": { "enum": ["humidifier"], "type": "string" },
+          "service": { "enum": ["set_humidity"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "humidifier.set_mode",
+      "description": "Sets the humidifier operation mode.",
+      "parameters": {
+        "properties": {
+          "data": {
+            "properties": { "mode": { "example": "away", "type": "string" } },
+            "type": "object"
+          },
+          "domain": { "enum": ["humidifier"], "type": "string" },
+          "service": { "enum": ["set_mode"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "humidifier.turn_off",
+      "description": "Turns the humidifier off.",
+      "parameters": {
+        "properties": {
+          "data": { "properties": {}, "type": "object" },
+          "domain": { "enum": ["humidifier"], "type": "string" },
+          "service": { "enum": ["turn_off"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "humidifier.toggle",
+      "description": "Toggles the humidifier on/off.",
+      "parameters": {
+        "properties": {
+          "data": { "properties": {}, "type": "object" },
+          "domain": { "enum": ["humidifier"], "type": "string" },
+          "service": { "enum": ["toggle"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "humidifier.turn_on",
+      "description": "Turns the humidifier on.",
+      "parameters": {
+        "properties": {
+          "data": { "properties": {}, "type": "object" },
+          "domain": { "enum": ["humidifier"], "type": "string" },
+          "service": { "enum": ["turn_on"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "timer.cancel",
+      "description": "Cancels a timer.",
+      "parameters": {
+        "properties": {
+          "data": { "properties": {}, "type": "object" },
+          "domain": { "enum": ["timer"], "type": "string" },
+          "service": { "enum": ["cancel"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "timer.start",
+      "description": "Starts a timer.",
+      "parameters": {
+        "properties": {
+          "data": {
+            "properties": {
+              "duration": { "example": "00:01:00 or 60", "type": "string" }
+            },
+            "type": "object"
+          },
+          "domain": { "enum": ["timer"], "type": "string" },
+          "service": { "enum": ["start"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "timer.change",
+      "description": "Changes a timer.",
+      "parameters": {
+        "properties": {
+          "data": {
+            "properties": {
+              "duration": { "example": "00:01:00, 60 or -60", "type": "string" }
+            },
+            "type": "object"
+          },
+          "domain": { "enum": ["timer"], "type": "string" },
+          "service": { "enum": ["change"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "timer.pause",
+      "description": "Pauses a timer.",
+      "parameters": {
+        "properties": {
+          "data": { "properties": {}, "type": "object" },
+          "domain": { "enum": ["timer"], "type": "string" },
+          "service": { "enum": ["pause"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "timer.finish",
+      "description": "Finishes a timer.",
+      "parameters": {
+        "properties": {
+          "data": { "properties": {}, "type": "object" },
+          "domain": { "enum": ["timer"], "type": "string" },
+          "service": { "enum": ["finish"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "timer.reload",
+      "description": "Reloads timers from the YAML-configuration.",
+      "parameters": {
+        "properties": {
+          "data": { "properties": {}, "type": "object" },
+          "domain": { "enum": ["timer"], "type": "string" },
+          "service": { "enum": ["reload"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "ffmpeg.stop",
+      "description": "Sends a stop command to a ffmpeg based sensor.",
+      "parameters": {
+        "properties": {
+          "data": {
+            "properties": { "entity_id": { "type": ["null", "string"] } },
+            "type": "object"
+          },
+          "domain": { "enum": ["ffmpeg"], "type": "string" },
+          "service": { "enum": ["stop"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "ffmpeg.restart",
+      "description": "Sends a restart command to a ffmpeg based sensor.",
+      "parameters": {
+        "properties": {
+          "data": {
+            "properties": { "entity_id": { "type": ["null", "string"] } },
+            "type": "object"
+          },
+          "domain": { "enum": ["ffmpeg"], "type": "string" },
+          "service": { "enum": ["restart"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "ffmpeg.start",
+      "description": "Sends a start command to a ffmpeg based sensor.",
+      "parameters": {
+        "properties": {
+          "data": {
+            "properties": { "entity_id": { "type": ["null", "string"] } },
+            "type": "object"
+          },
+          "domain": { "enum": ["ffmpeg"], "type": "string" },
+          "service": { "enum": ["start"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "system_log.write",
+      "description": "Write log entry.",
+      "parameters": {
+        "properties": {
+          "data": {
+            "properties": {
+              "level": { "type": ["null", "string"] },
+              "logger": {
+                "example": "mycomponent.myplatform",
+                "type": "string"
+              },
+              "message": { "example": "Something went wrong", "type": "string" }
+            },
+            "type": "object"
+          },
+          "domain": { "enum": ["system_log"], "type": "string" },
+          "service": { "enum": ["write"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "system_log.clear",
+      "description": "Clears all log entries.",
+      "parameters": {
+        "properties": {
+          "data": { "properties": {}, "type": "object" },
+          "domain": { "enum": ["system_log"], "type": "string" },
+          "service": { "enum": ["clear"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "rest.reload",
+      "description": "Reloads REST entities from the YAML-configuration.",
+      "parameters": {
+        "properties": {
+          "data": { "properties": {}, "type": "object" },
+          "domain": { "enum": ["rest"], "type": "string" },
+          "service": { "enum": ["reload"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "lock.unlock",
+      "description": "Unlocks a lock.",
+      "parameters": {
+        "properties": {
+          "data": {
+            "properties": {
+              "code": {
+                "example": 1234,
+                "maximum": 1234.0,
+                "minimum": 1234.0,
+                "type": "number"
+              }
+            },
+            "type": "object"
+          },
+          "domain": { "enum": ["lock"], "type": "string" },
+          "service": { "enum": ["unlock"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "lock.lock",
+      "description": "Locks a lock.",
+      "parameters": {
+        "properties": {
+          "data": {
+            "properties": {
+              "code": {
+                "example": 1234,
+                "maximum": 1234.0,
+                "minimum": 1234.0,
+                "type": "number"
+              }
+            },
+            "type": "object"
+          },
+          "domain": { "enum": ["lock"], "type": "string" },
+          "service": { "enum": ["lock"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "lock.open",
+      "description": "Opens a lock.",
+      "parameters": {
+        "properties": {
+          "data": {
+            "properties": {
+              "code": {
+                "example": 1234,
+                "maximum": 1234.0,
+                "minimum": 1234.0,
+                "type": "number"
+              }
+            },
+            "type": "object"
+          },
+          "domain": { "enum": ["lock"], "type": "string" },
+          "service": { "enum": ["open"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "todo.add_item",
+      "description": "Add a new to-do list item.",
+      "parameters": {
+        "properties": {
+          "data": {
+            "properties": {
+              "description": {
+                "example": "A more complete description of the to-do item than that provided by the summary.",
+                "type": "string"
+              },
+              "due_date": { "example": "2023-11-17", "type": "string" },
+              "due_datetime": {
+                "example": "2023-11-17 13:30:00",
+                "type": "string"
+              },
+              "item": {
+                "example": "Submit income tax return",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          "domain": { "enum": ["todo"], "type": "string" },
+          "service": { "enum": ["add_item"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "todo.get_items",
+      "description": "Get items on a to-do list.",
+      "parameters": {
+        "properties": {
+          "data": {
+            "properties": {
+              "status": { "example": "needs_action", "type": "string" }
+            },
+            "type": "object"
+          },
+          "domain": { "enum": ["todo"], "type": "string" },
+          "service": { "enum": ["get_items"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "todo.remove_item",
+      "description": "Remove an existing to-do list item by its name.",
+      "parameters": {
+        "properties": {
+          "data": {
+            "properties": { "item": { "type": ["null", "string"] } },
+            "type": "object"
+          },
+          "domain": { "enum": ["todo"], "type": "string" },
+          "service": { "enum": ["remove_item"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "todo.update_item",
+      "description": "Update an existing to-do list item based on its name.",
+      "parameters": {
+        "properties": {
+          "data": {
+            "properties": {
+              "description": {
+                "example": "A more complete description of the to-do item than that provided by the summary.",
+                "type": "string"
+              },
+              "due_date": { "example": "2023-11-17", "type": "string" },
+              "due_datetime": {
+                "example": "2023-11-17 13:30:00",
+                "type": "string"
+              },
+              "item": {
+                "example": "Submit income tax return",
+                "type": "string"
+              },
+              "rename": { "example": "Something else", "type": "string" },
+              "status": { "example": "needs_action", "type": "string" }
+            },
+            "type": "object"
+          },
+          "domain": { "enum": ["todo"], "type": "string" },
+          "service": { "enum": ["update_item"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "todo.remove_completed_items",
+      "description": "Remove all to-do list items that have been completed.",
+      "parameters": {
+        "properties": {
+          "data": { "properties": {}, "type": "object" },
+          "domain": { "enum": ["todo"], "type": "string" },
+          "service": { "enum": ["remove_completed_items"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "adguard.remove_url",
+      "description": "Removes a filter subscription from AdGuard Home.",
+      "parameters": {
+        "properties": {
+          "data": {
+            "properties": {
+              "url": {
+                "example": "https://www.example.com/filter/1.txt",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          "domain": { "enum": ["adguard"], "type": "string" },
+          "service": { "enum": ["remove_url"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "adguard.add_url",
+      "description": "Add a new filter subscription to AdGuard Home.",
+      "parameters": {
+        "properties": {
+          "data": {
+            "properties": {
+              "name": { "example": "Example", "type": "string" },
+              "url": {
+                "example": "https://www.example.com/filter/1.txt",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          "domain": { "enum": ["adguard"], "type": "string" },
+          "service": { "enum": ["add_url"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "adguard.disable_url",
+      "description": "Disables a filter subscription in AdGuard Home.",
+      "parameters": {
+        "properties": {
+          "data": {
+            "properties": {
+              "url": {
+                "example": "https://www.example.com/filter/1.txt",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          "domain": { "enum": ["adguard"], "type": "string" },
+          "service": { "enum": ["disable_url"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "adguard.enable_url",
+      "description": "Enables a filter subscription in AdGuard Home.",
+      "parameters": {
+        "properties": {
+          "data": {
+            "properties": {
+              "url": {
+                "example": "https://www.example.com/filter/1.txt",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          "domain": { "enum": ["adguard"], "type": "string" },
+          "service": { "enum": ["enable_url"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "adguard.refresh",
+      "description": "Refresh all filter subscriptions in AdGuard Home.",
+      "parameters": {
+        "properties": {
+          "data": {
+            "properties": { "force": { "type": ["null", "string"] } },
+            "type": "object"
+          },
+          "domain": { "enum": ["adguard"], "type": "string" },
+          "service": { "enum": ["refresh"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "shopping_list.add_item",
+      "description": "Adds an item to the shopping list.",
+      "parameters": {
+        "properties": {
+          "data": {
+            "properties": { "name": { "example": "Beer", "type": "string" } },
+            "type": "object"
+          },
+          "domain": { "enum": ["shopping_list"], "type": "string" },
+          "service": { "enum": ["add_item"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "shopping_list.clear_completed_items",
+      "description": "Clears completed items from the shopping list.",
+      "parameters": {
+        "properties": {
+          "data": { "properties": {}, "type": "object" },
+          "domain": { "enum": ["shopping_list"], "type": "string" },
+          "service": { "enum": ["clear_completed_items"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "shopping_list.complete_item",
+      "description": "Marks the first item with matching name as completed in the shopping list.",
+      "parameters": {
+        "properties": {
+          "data": {
+            "properties": { "name": { "example": "Beer", "type": "string" } },
+            "type": "object"
+          },
+          "domain": { "enum": ["shopping_list"], "type": "string" },
+          "service": { "enum": ["complete_item"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "shopping_list.incomplete_item",
+      "description": "Marks the first item with matching name as incomplete in the shopping list.",
+      "parameters": {
+        "properties": {
+          "data": {
+            "properties": { "name": { "example": "Beer", "type": "string" } },
+            "type": "object"
+          },
+          "domain": { "enum": ["shopping_list"], "type": "string" },
+          "service": { "enum": ["incomplete_item"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "shopping_list.complete_all",
+      "description": "Marks all items as completed in the shopping list (without removing them from the list).",
+      "parameters": {
+        "properties": {
+          "data": { "properties": {}, "type": "object" },
+          "domain": { "enum": ["shopping_list"], "type": "string" },
+          "service": { "enum": ["complete_all"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "shopping_list.incomplete_all",
+      "description": "Marks all items as incomplete in the shopping list.",
+      "parameters": {
+        "properties": {
+          "data": { "properties": {}, "type": "object" },
+          "domain": { "enum": ["shopping_list"], "type": "string" },
+          "service": { "enum": ["incomplete_all"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "shopping_list.sort",
+      "description": "Sorts all items by name in the shopping list.",
+      "parameters": {
+        "properties": {
+          "data": {
+            "properties": { "reverse": { "type": ["null", "string"] } },
+            "type": "object"
+          },
+          "domain": { "enum": ["shopping_list"], "type": "string" },
+          "service": { "enum": ["sort"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "shopping_list.remove_item",
+      "description": "Removes the first item with matching name from the shopping list.",
+      "parameters": {
+        "properties": {
+          "data": {
+            "properties": { "name": { "example": "Beer", "type": "string" } },
+            "type": "object"
+          },
+          "domain": { "enum": ["shopping_list"], "type": "string" },
+          "service": { "enum": ["remove_item"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "valve.toggle",
+      "description": "Toggles a valve open/closed.",
+      "parameters": {
+        "properties": {
+          "data": { "properties": {}, "type": "object" },
+          "domain": { "enum": ["valve"], "type": "string" },
+          "service": { "enum": ["toggle"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "valve.open_valve",
+      "description": "Opens a valve.",
+      "parameters": {
+        "properties": {
+          "data": { "properties": {}, "type": "object" },
+          "domain": { "enum": ["valve"], "type": "string" },
+          "service": { "enum": ["open_valve"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "valve.stop_valve",
+      "description": "Stops the valve movement.",
+      "parameters": {
+        "properties": {
+          "data": { "properties": {}, "type": "object" },
+          "domain": { "enum": ["valve"], "type": "string" },
+          "service": { "enum": ["stop_valve"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "valve.close_valve",
+      "description": "Closes a valve.",
+      "parameters": {
+        "properties": {
+          "data": { "properties": {}, "type": "object" },
+          "domain": { "enum": ["valve"], "type": "string" },
+          "service": { "enum": ["close_valve"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "valve.set_valve_position",
+      "description": "Moves a valve to a specific position.",
+      "parameters": {
+        "properties": {
+          "data": {
+            "properties": { "position": { "type": ["null", "string"] } },
+            "type": "object"
+          },
+          "domain": { "enum": ["valve"], "type": "string" },
+          "service": { "enum": ["set_valve_position"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "script.turn_on",
+      "description": "Runs the sequence of actions defined in a script.",
+      "parameters": {
+        "properties": {
+          "data": { "properties": {}, "type": "object" },
+          "domain": { "enum": ["script"], "type": "string" },
+          "service": { "enum": ["turn_on"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "script.hello",
+      "description": "",
+      "parameters": {
+        "properties": {
+          "data": { "properties": {}, "type": "object" },
+          "domain": { "enum": ["script"], "type": "string" },
+          "service": { "enum": ["hello"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "script.turn_off",
+      "description": "Stops a running script.",
+      "parameters": {
+        "properties": {
+          "data": { "properties": {}, "type": "object" },
+          "domain": { "enum": ["script"], "type": "string" },
+          "service": { "enum": ["turn_off"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "script.toggle",
+      "description": "Toggle a script. Starts it, if isn't running, stops it otherwise.",
+      "parameters": {
+        "properties": {
+          "data": { "properties": {}, "type": "object" },
+          "domain": { "enum": ["script"], "type": "string" },
+          "service": { "enum": ["toggle"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "script.reload",
+      "description": "Reloads all the available scripts.",
+      "parameters": {
+        "properties": {
+          "data": { "properties": {}, "type": "object" },
+          "domain": { "enum": ["script"], "type": "string" },
+          "service": { "enum": ["reload"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "hassio.addon_stop",
+      "description": "Stops an add-on.",
+      "parameters": {
+        "properties": {
+          "data": {
+            "properties": {
+              "addon": { "example": "core_ssh", "type": "string" }
+            },
+            "type": "object"
+          },
+          "domain": { "enum": ["hassio"], "type": "string" },
+          "service": { "enum": ["addon_stop"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "hassio.restore_partial",
+      "description": "Restores from a partial backup.",
+      "parameters": {
+        "properties": {
+          "data": {
+            "properties": {
+              "addons": {
+                "example": ["core_ssh", "core_samba", "core_mosquitto"],
+                "maxItems": 3,
+                "minItems": 3,
+                "type": "array"
+              },
+              "folders": {
+                "example": ["homeassistant", "share"],
+                "maxItems": 2,
+                "minItems": 2,
+                "type": "array"
+              },
+              "homeassistant": { "type": ["null", "string"] },
+              "password": { "example": "password", "type": "string" },
+              "slug": { "type": ["null", "string"] }
+            },
+            "type": "object"
+          },
+          "domain": { "enum": ["hassio"], "type": "string" },
+          "service": { "enum": ["restore_partial"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "hassio.backup_partial",
+      "description": "Creates a partial backup.",
+      "parameters": {
+        "properties": {
+          "data": {
+            "properties": {
+              "addons": {
+                "example": ["core_ssh", "core_samba", "core_mosquitto"],
+                "maxItems": 3,
+                "minItems": 3,
+                "type": "array"
+              },
+              "compressed": { "type": ["null", "string"] },
+              "folders": {
+                "example": ["homeassistant", "share"],
+                "maxItems": 2,
+                "minItems": 2,
+                "type": "array"
+              },
+              "homeassistant": { "type": ["null", "string"] },
+              "homeassistant_exclude_database": { "type": ["null", "string"] },
+              "location": { "example": "my_backup_mount", "type": "string" },
+              "name": { "example": "Partial backup 1", "type": "string" },
+              "password": { "example": "password", "type": "string" }
+            },
+            "type": "object"
+          },
+          "domain": { "enum": ["hassio"], "type": "string" },
+          "service": { "enum": ["backup_partial"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "hassio.addon_start",
+      "description": "Starts an add-on.",
+      "parameters": {
+        "properties": {
+          "data": {
+            "properties": {
+              "addon": { "example": "core_ssh", "type": "string" }
+            },
+            "type": "object"
+          },
+          "domain": { "enum": ["hassio"], "type": "string" },
+          "service": { "enum": ["addon_start"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "hassio.backup_full",
+      "description": "Creates a full backup.",
+      "parameters": {
+        "properties": {
+          "data": {
+            "properties": {
+              "compressed": { "type": ["null", "string"] },
+              "homeassistant_exclude_database": { "type": ["null", "string"] },
+              "location": { "example": "my_backup_mount", "type": "string" },
+              "name": { "example": "Backup 1", "type": "string" },
+              "password": { "example": "password", "type": "string" }
+            },
+            "type": "object"
+          },
+          "domain": { "enum": ["hassio"], "type": "string" },
+          "service": { "enum": ["backup_full"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "hassio.addon_restart",
+      "description": "Restarts an add-on.",
+      "parameters": {
+        "properties": {
+          "data": {
+            "properties": {
+              "addon": { "example": "core_ssh", "type": "string" }
+            },
+            "type": "object"
+          },
+          "domain": { "enum": ["hassio"], "type": "string" },
+          "service": { "enum": ["addon_restart"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "hassio.addon_stdin",
+      "description": "Writes data to add-on stdin.",
+      "parameters": {
+        "properties": {
+          "data": {
+            "properties": {
+              "addon": { "example": "core_ssh", "type": "string" }
+            },
+            "type": "object"
+          },
+          "domain": { "enum": ["hassio"], "type": "string" },
+          "service": { "enum": ["addon_stdin"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "hassio.addon_update",
+      "description": "Updates an add-on. This service should be used with caution since add-on updates can contain breaking changes. It is highly recommended that you review release notes/change logs before updating an add-on.",
+      "parameters": {
+        "properties": {
+          "data": {
+            "properties": {
+              "addon": { "example": "core_ssh", "type": "string" }
+            },
+            "type": "object"
+          },
+          "domain": { "enum": ["hassio"], "type": "string" },
+          "service": { "enum": ["addon_update"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "hassio.host_reboot",
+      "description": "Reboots the host system.",
+      "parameters": {
+        "properties": {
+          "data": { "properties": {}, "type": "object" },
+          "domain": { "enum": ["hassio"], "type": "string" },
+          "service": { "enum": ["host_reboot"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "hassio.host_shutdown",
+      "description": "Powers off the host system.",
+      "parameters": {
+        "properties": {
+          "data": { "properties": {}, "type": "object" },
+          "domain": { "enum": ["hassio"], "type": "string" },
+          "service": { "enum": ["host_shutdown"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "hassio.restore_full",
+      "description": "Restores from full backup.",
+      "parameters": {
+        "properties": {
+          "data": {
+            "properties": {
+              "password": { "example": "password", "type": "string" },
+              "slug": { "type": ["null", "string"] }
+            },
+            "type": "object"
+          },
+          "domain": { "enum": ["hassio"], "type": "string" },
+          "service": { "enum": ["restore_full"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "lawn_mower.pause",
+      "description": "Pauses the mowing task.",
+      "parameters": {
+        "properties": {
+          "data": { "properties": {}, "type": "object" },
+          "domain": { "enum": ["lawn_mower"], "type": "string" },
+          "service": { "enum": ["pause"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "lawn_mower.dock",
+      "description": "Stops the mowing task and returns to the dock.",
+      "parameters": {
+        "properties": {
+          "data": { "properties": {}, "type": "object" },
+          "domain": { "enum": ["lawn_mower"], "type": "string" },
+          "service": { "enum": ["dock"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "lawn_mower.start_mowing",
+      "description": "Starts the mowing task.",
+      "parameters": {
+        "properties": {
+          "data": { "properties": {}, "type": "object" },
+          "domain": { "enum": ["lawn_mower"], "type": "string" },
+          "service": { "enum": ["start_mowing"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "weather.get_forecast",
+      "description": "Get weather forecast.",
+      "parameters": {
+        "properties": {
+          "data": {
+            "properties": { "type": { "type": ["null", "string"] } },
+            "type": "object"
+          },
+          "domain": { "enum": ["weather"], "type": "string" },
+          "service": { "enum": ["get_forecast"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "weather.get_forecasts",
+      "description": "Get weather forecasts.",
+      "parameters": {
+        "properties": {
+          "data": {
+            "properties": { "type": { "type": ["null", "string"] } },
+            "type": "object"
+          },
+          "domain": { "enum": ["weather"], "type": "string" },
+          "service": { "enum": ["get_forecasts"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "remote.learn_command",
+      "description": "Learns a command or a list of commands from a device.",
+      "parameters": {
+        "properties": {
+          "data": {
+            "properties": {
+              "alternative": { "type": ["null", "string"] },
+              "command": { "example": "Turn on", "type": "string" },
+              "command_type": { "type": ["null", "string"] },
+              "device": { "example": "television", "type": "string" },
+              "timeout": { "type": ["null", "string"] }
+            },
+            "type": "object"
+          },
+          "domain": { "enum": ["remote"], "type": "string" },
+          "service": { "enum": ["learn_command"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "remote.send_command",
+      "description": "Sends a command or a list of commands to a device.",
+      "parameters": {
+        "properties": {
+          "data": {
+            "properties": {
+              "command": { "example": "Play", "type": "string" },
+              "delay_secs": { "type": ["null", "string"] },
+              "device": { "example": "32756745", "type": "string" },
+              "hold_secs": { "type": ["null", "string"] },
+              "num_repeats": { "type": ["null", "string"] }
+            },
+            "type": "object"
+          },
+          "domain": { "enum": ["remote"], "type": "string" },
+          "service": { "enum": ["send_command"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "remote.turn_on",
+      "description": "Sends the power on command.",
+      "parameters": {
+        "properties": {
+          "data": {
+            "properties": {
+              "activity": { "example": "BedroomTV", "type": "string" }
+            },
+            "type": "object"
+          },
+          "domain": { "enum": ["remote"], "type": "string" },
+          "service": { "enum": ["turn_on"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "remote.delete_command",
+      "description": "Deletes a command or a list of commands from the database.",
+      "parameters": {
+        "properties": {
+          "data": {
+            "properties": {
+              "command": { "example": "Mute", "type": "string" },
+              "device": { "example": "television", "type": "string" }
+            },
+            "type": "object"
+          },
+          "domain": { "enum": ["remote"], "type": "string" },
+          "service": { "enum": ["delete_command"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "remote.turn_off",
+      "description": "Turns the device off.",
+      "parameters": {
+        "properties": {
+          "data": { "properties": {}, "type": "object" },
+          "domain": { "enum": ["remote"], "type": "string" },
+          "service": { "enum": ["turn_off"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "remote.toggle",
+      "description": "Toggles a device on/off.",
+      "parameters": {
+        "properties": {
+          "data": { "properties": {}, "type": "object" },
+          "domain": { "enum": ["remote"], "type": "string" },
+          "service": { "enum": ["toggle"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "homeassistant.reload_custom_templates",
+      "description": "Reloads Jinja2 templates found in the `custom_templates` folder in your config. New values will be applied on the next render of the template.",
+      "parameters": {
+        "properties": {
+          "data": { "properties": {}, "type": "object" },
+          "domain": { "enum": ["homeassistant"], "type": "string" },
+          "service": { "enum": ["reload_custom_templates"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "homeassistant.reload_all",
+      "description": "Reload all YAML configuration that can be reloaded without restarting Home Assistant.",
+      "parameters": {
+        "properties": {
+          "data": { "properties": {}, "type": "object" },
+          "domain": { "enum": ["homeassistant"], "type": "string" },
+          "service": { "enum": ["reload_all"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "homeassistant.check_config",
+      "description": "Checks the Home Assistant YAML-configuration files for errors. Errors will be shown in the Home Assistant logs.",
+      "parameters": {
+        "properties": {
+          "data": { "properties": {}, "type": "object" },
+          "domain": { "enum": ["homeassistant"], "type": "string" },
+          "service": { "enum": ["check_config"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "homeassistant.reload_config_entry",
+      "description": "Reloads the specified config entry.",
+      "parameters": {
+        "properties": {
+          "data": {
+            "properties": {
+              "entry_id": {
+                "example": "8955375327824e14ba89e4b29cc3ec9a",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          "domain": { "enum": ["homeassistant"], "type": "string" },
+          "service": { "enum": ["reload_config_entry"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "homeassistant.stop",
+      "description": "Stops Home Assistant.",
+      "parameters": {
+        "properties": {
+          "data": { "properties": {}, "type": "object" },
+          "domain": { "enum": ["homeassistant"], "type": "string" },
+          "service": { "enum": ["stop"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "homeassistant.toggle",
+      "description": "Generic service to toggle devices on/off under any domain.",
+      "parameters": {
+        "properties": {
+          "data": { "properties": {}, "type": "object" },
+          "domain": { "enum": ["homeassistant"], "type": "string" },
+          "service": { "enum": ["toggle"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "homeassistant.update_entity",
+      "description": "Forces one or more entities to update its data.",
+      "parameters": {
+        "properties": {
+          "data": { "properties": {}, "type": "object" },
+          "domain": { "enum": ["homeassistant"], "type": "string" },
+          "service": { "enum": ["update_entity"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "homeassistant.restart",
+      "description": "Restarts Home Assistant.",
+      "parameters": {
+        "properties": {
+          "data": { "properties": {}, "type": "object" },
+          "domain": { "enum": ["homeassistant"], "type": "string" },
+          "service": { "enum": ["restart"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "homeassistant.save_persistent_states",
+      "description": "Saves the persistent states immediately. Maintains the normal periodic saving interval.",
+      "parameters": {
+        "properties": {
+          "data": { "properties": {}, "type": "object" },
+          "domain": { "enum": ["homeassistant"], "type": "string" },
+          "service": { "enum": ["save_persistent_states"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "homeassistant.reload_core_config",
+      "description": "Reloads the core configuration from the YAML-configuration.",
+      "parameters": {
+        "properties": {
+          "data": { "properties": {}, "type": "object" },
+          "domain": { "enum": ["homeassistant"], "type": "string" },
+          "service": { "enum": ["reload_core_config"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "homeassistant.set_location",
+      "description": "Updates the Home Assistant location.",
+      "parameters": {
+        "properties": {
+          "data": {
+            "properties": {
+              "elevation": {
+                "example": 120,
+                "maximum": 120.0,
+                "minimum": 120.0,
+                "type": "number"
+              },
+              "latitude": {
+                "example": 32.87336,
+                "maximum": 32.87336,
+                "minimum": 32.87336,
+                "type": "number"
+              },
+              "longitude": {
+                "example": 117.22743,
+                "maximum": 117.22743,
+                "minimum": 117.22743,
+                "type": "number"
+              }
+            },
+            "type": "object"
+          },
+          "domain": { "enum": ["homeassistant"], "type": "string" },
+          "service": { "enum": ["set_location"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "homeassistant.turn_off",
+      "description": "Generic service to turn devices off under any domain.",
+      "parameters": {
+        "properties": {
+          "data": { "properties": {}, "type": "object" },
+          "domain": { "enum": ["homeassistant"], "type": "string" },
+          "service": { "enum": ["turn_off"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "homeassistant.turn_on",
+      "description": "Generic service to turn devices on under any domain.",
+      "parameters": {
+        "properties": {
+          "data": { "properties": {}, "type": "object" },
+          "domain": { "enum": ["homeassistant"], "type": "string" },
+          "service": { "enum": ["turn_on"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "scene.apply",
+      "description": "Activates a scene with configuration.",
+      "parameters": {
+        "properties": {
+          "data": {
+            "properties": {
+              "entities": {
+                "example": "light.kitchen: \"on\"\nlight.ceiling:\n  state: \"on\"\n  brightness: 80\n",
+                "type": "string"
+              },
+              "transition": { "type": ["null", "string"] }
+            },
+            "type": "object"
+          },
+          "domain": { "enum": ["scene"], "type": "string" },
+          "service": { "enum": ["apply"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "scene.turn_on",
+      "description": "Activates a scene.",
+      "parameters": {
+        "properties": {
+          "data": {
+            "properties": { "transition": { "type": ["null", "string"] } },
+            "type": "object"
+          },
+          "domain": { "enum": ["scene"], "type": "string" },
+          "service": { "enum": ["turn_on"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "scene.create",
+      "description": "Creates a new scene.",
+      "parameters": {
+        "properties": {
+          "data": {
+            "properties": {
+              "entities": {
+                "example": "light.tv_back_light: \"on\"\nlight.ceiling:\n  state: \"on\"\n  brightness: 200\n",
+                "type": "string"
+              },
+              "scene_id": { "example": "all_lights", "type": "string" },
+              "snapshot_entities": {
+                "example": "- light.ceiling\n- light.kitchen\n",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          "domain": { "enum": ["scene"], "type": "string" },
+          "service": { "enum": ["create"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "scene.delete",
+      "description": "Deletes a dynamically created scene.",
+      "parameters": {
+        "properties": {
+          "data": { "properties": {}, "type": "object" },
+          "domain": { "enum": ["scene"], "type": "string" },
+          "service": { "enum": ["delete"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "scene.reload",
+      "description": "Reloads the scenes from the YAML-configuration.",
+      "parameters": {
+        "properties": {
+          "data": { "properties": {}, "type": "object" },
+          "domain": { "enum": ["scene"], "type": "string" },
+          "service": { "enum": ["reload"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "zha.issue_zigbee_cluster_command",
+      "description": "Issues a command on the specified cluster on the specified entity.",
+      "parameters": {
+        "properties": {
+          "data": {
+            "properties": {
+              "args": { "example": "[arg1, arg2, argN]", "type": "string" },
+              "cluster_id": { "type": ["null", "string"] },
+              "cluster_type": { "type": ["null", "string"] },
+              "command": { "type": ["null", "string"] },
+              "command_type": { "type": ["null", "string"] },
+              "endpoint_id": { "type": ["null", "string"] },
+              "ieee": {
+                "example": "00:0d:6f:00:05:7d:2d:34",
+                "type": "string"
+              },
+              "manufacturer": {
+                "example": 252,
+                "maximum": 252.0,
+                "minimum": 252.0,
+                "type": "number"
+              },
+              "params": { "type": ["null", "string"] }
+            },
+            "type": "object"
+          },
+          "domain": { "enum": ["zha"], "type": "string" },
+          "service": {
+            "enum": ["issue_zigbee_cluster_command"],
+            "type": "string"
+          }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "zha.warning_device_squawk",
+      "description": "This service uses the WD capabilities to emit a quick audible/visible pulse called a \"squawk\". The squawk command has no effect if the WD is currently active (warning in progress).",
+      "parameters": {
+        "properties": {
+          "data": {
+            "properties": {
+              "ieee": {
+                "example": "00:0d:6f:00:05:7d:2d:34",
+                "type": "string"
+              },
+              "level": { "type": ["null", "string"] },
+              "mode": { "type": ["null", "string"] },
+              "strobe": { "type": ["null", "string"] }
+            },
+            "type": "object"
+          },
+          "domain": { "enum": ["zha"], "type": "string" },
+          "service": { "enum": ["warning_device_squawk"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "zha.warning_device_warn",
+      "description": "This service starts the operation of the warning device. The warning device alerts the surrounding area by audible (siren) and visual (strobe) signals.",
+      "parameters": {
+        "properties": {
+          "data": {
+            "properties": {
+              "duration": { "type": ["null", "string"] },
+              "duty_cycle": { "type": ["null", "string"] },
+              "ieee": {
+                "example": "00:0d:6f:00:05:7d:2d:34",
+                "type": "string"
+              },
+              "intensity": { "type": ["null", "string"] },
+              "level": { "type": ["null", "string"] },
+              "mode": { "type": ["null", "string"] },
+              "strobe": { "type": ["null", "string"] }
+            },
+            "type": "object"
+          },
+          "domain": { "enum": ["zha"], "type": "string" },
+          "service": { "enum": ["warning_device_warn"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "zha.remove",
+      "description": "Removes a node from the Zigbee network.",
+      "parameters": {
+        "properties": {
+          "data": {
+            "properties": {
+              "ieee": { "example": "00:0d:6f:00:05:7d:2d:34", "type": "string" }
+            },
+            "type": "object"
+          },
+          "domain": { "enum": ["zha"], "type": "string" },
+          "service": { "enum": ["remove"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "zha.issue_zigbee_group_command",
+      "description": "Issue command on the specified cluster on the specified group.",
+      "parameters": {
+        "properties": {
+          "data": {
+            "properties": {
+              "args": { "example": "[arg1, arg2, argN]", "type": "string" },
+              "cluster_id": { "type": ["null", "string"] },
+              "cluster_type": { "type": ["null", "string"] },
+              "command": { "type": ["null", "string"] },
+              "group": {
+                "example": 546,
+                "maximum": 546.0,
+                "minimum": 546.0,
+                "type": "number"
+              },
+              "manufacturer": {
+                "example": 252,
+                "maximum": 252.0,
+                "minimum": 252.0,
+                "type": "number"
+              }
+            },
+            "type": "object"
+          },
+          "domain": { "enum": ["zha"], "type": "string" },
+          "service": {
+            "enum": ["issue_zigbee_group_command"],
+            "type": "string"
+          }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "zha.clear_lock_user_code",
+      "description": "Clears a user code from a lock.",
+      "parameters": {
+        "properties": {
+          "data": {
+            "properties": {
+              "code_slot": {
+                "example": 1,
+                "maximum": 1.0,
+                "minimum": 1.0,
+                "type": "number"
+              }
+            },
+            "type": "object"
+          },
+          "domain": { "enum": ["zha"], "type": "string" },
+          "service": { "enum": ["clear_lock_user_code"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "zha.set_lock_user_code",
+      "description": "Sets a user code on a lock.",
+      "parameters": {
+        "properties": {
+          "data": {
+            "properties": {
+              "code_slot": {
+                "example": 1,
+                "maximum": 1.0,
+                "minimum": 1.0,
+                "type": "number"
+              },
+              "user_code": {
+                "example": 1234,
+                "maximum": 1234.0,
+                "minimum": 1234.0,
+                "type": "number"
+              }
+            },
+            "type": "object"
+          },
+          "domain": { "enum": ["zha"], "type": "string" },
+          "service": { "enum": ["set_lock_user_code"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "zha.enable_lock_user_code",
+      "description": "Enables a user code on a lock.",
+      "parameters": {
+        "properties": {
+          "data": {
+            "properties": {
+              "code_slot": {
+                "example": 1,
+                "maximum": 1.0,
+                "minimum": 1.0,
+                "type": "number"
+              }
+            },
+            "type": "object"
+          },
+          "domain": { "enum": ["zha"], "type": "string" },
+          "service": { "enum": ["enable_lock_user_code"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "zha.permit",
+      "description": "Allows nodes to join the Zigbee network.",
+      "parameters": {
+        "properties": {
+          "data": {
+            "properties": {
+              "duration": { "type": ["null", "string"] },
+              "ieee": {
+                "example": "00:0d:6f:00:05:7d:2d:34",
+                "type": "string"
+              },
+              "install_code": {
+                "example": "1234-5678-1234-5678-AABB-CCDD-AABB-CCDD-EEFF",
+                "type": "string"
+              },
+              "qr_code": {
+                "example": "Z:000D6FFFFED4163B$I:52797BF4A5084DAA8E1712B61741CA024051",
+                "type": "string"
+              },
+              "source_ieee": {
+                "example": "00:0a:bf:00:01:10:23:35",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          "domain": { "enum": ["zha"], "type": "string" },
+          "service": { "enum": ["permit"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "zha.set_zigbee_cluster_attribute",
+      "description": "Sets an attribute value for the specified cluster on the specified entity.",
+      "parameters": {
+        "properties": {
+          "data": {
+            "properties": {
+              "attribute": {
+                "example": 0,
+                "maximum": 0.0,
+                "minimum": 0.0,
+                "type": "number"
+              },
+              "cluster_id": { "type": ["null", "string"] },
+              "cluster_type": { "type": ["null", "string"] },
+              "endpoint_id": { "type": ["null", "string"] },
+              "ieee": {
+                "example": "00:0d:6f:00:05:7d:2d:34",
+                "type": "string"
+              },
+              "manufacturer": {
+                "example": 252,
+                "maximum": 252.0,
+                "minimum": 252.0,
+                "type": "number"
+              },
+              "value": {
+                "example": 1,
+                "maximum": 1.0,
+                "minimum": 1.0,
+                "type": "number"
+              }
+            },
+            "type": "object"
+          },
+          "domain": { "enum": ["zha"], "type": "string" },
+          "service": {
+            "enum": ["set_zigbee_cluster_attribute"],
+            "type": "string"
+          }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "zha.disable_lock_user_code",
+      "description": "Disables a user code on a lock.",
+      "parameters": {
+        "properties": {
+          "data": {
+            "properties": {
+              "code_slot": {
+                "example": 1,
+                "maximum": 1.0,
+                "minimum": 1.0,
+                "type": "number"
+              }
+            },
+            "type": "object"
+          },
+          "domain": { "enum": ["zha"], "type": "string" },
+          "service": { "enum": ["disable_lock_user_code"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "conversation.process",
+      "description": "Launches a conversation from a transcribed text.",
+      "parameters": {
+        "properties": {
+          "data": {
+            "properties": {
+              "agent_id": { "example": "homeassistant", "type": "string" },
+              "language": { "example": "NL", "type": "string" },
+              "text": { "example": "Turn all lights on", "type": "string" }
+            },
+            "type": "object"
+          },
+          "domain": { "enum": ["conversation"], "type": "string" },
+          "service": { "enum": ["process"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "conversation.reload",
+      "description": "Reloads the intent configuration.",
+      "parameters": {
+        "properties": {
+          "data": {
+            "properties": {
+              "agent_id": { "example": "homeassistant", "type": "string" },
+              "language": { "example": "NL", "type": "string" }
+            },
+            "type": "object"
+          },
+          "domain": { "enum": ["conversation"], "type": "string" },
+          "service": { "enum": ["reload"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "input_text.set_value",
+      "description": "Sets the value.",
+      "parameters": {
+        "properties": {
+          "data": {
+            "properties": {
+              "value": {
+                "example": "This is an example text",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          "domain": { "enum": ["input_text"], "type": "string" },
+          "service": { "enum": ["set_value"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "input_text.reload",
+      "description": "Reloads helpers from the YAML-configuration.",
+      "parameters": {
+        "properties": {
+          "data": { "properties": {}, "type": "object" },
+          "domain": { "enum": ["input_text"], "type": "string" },
+          "service": { "enum": ["reload"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "cast.show_lovelace_view",
+      "description": "Shows a dashboard view on a Chromecast device.",
+      "parameters": {
+        "properties": {
+          "data": {
+            "properties": {
+              "dashboard_path": {
+                "example": "lovelace-cast",
+                "type": "string"
+              },
+              "entity_id": { "type": ["null", "string"] },
+              "view_path": { "example": "downstairs", "type": "string" }
+            },
+            "type": "object"
+          },
+          "domain": { "enum": ["cast"], "type": "string" },
+          "service": { "enum": ["show_lovelace_view"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "tts.speak",
+      "description": "Speaks something using text-to-speech on a media player.",
+      "parameters": {
+        "properties": {
+          "data": {
+            "properties": {
+              "cache": { "type": ["null", "string"] },
+              "language": { "example": "ru", "type": "string" },
+              "media_player_entity_id": { "type": ["null", "string"] },
+              "message": { "example": "My name is hanna", "type": "string" },
+              "options": { "example": "platform specific", "type": "string" }
+            },
+            "type": "object"
+          },
+          "domain": { "enum": ["tts"], "type": "string" },
+          "service": { "enum": ["speak"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "tts.clear_cache",
+      "description": "Removes all cached text-to-speech files and purges the memory.",
+      "parameters": {
+        "properties": {
+          "data": { "properties": {}, "type": "object" },
+          "domain": { "enum": ["tts"], "type": "string" },
+          "service": { "enum": ["clear_cache"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "tts.cloud_say",
+      "description": "Say something using text-to-speech on a media player with cloud.",
+      "parameters": {
+        "properties": {
+          "data": {
+            "properties": {
+              "cache": { "type": ["null", "string"] },
+              "entity_id": { "type": ["null", "string"] },
+              "language": { "example": "ru", "type": "string" },
+              "message": { "example": "My name is hanna", "type": "string" },
+              "options": { "example": "platform specific", "type": "string" }
+            },
+            "type": "object"
+          },
+          "domain": { "enum": ["tts"], "type": "string" },
+          "service": { "enum": ["cloud_say"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "tts.google_translate_say",
+      "description": "Say something using text-to-speech on a media player with google_translate.",
+      "parameters": {
+        "properties": {
+          "data": {
+            "properties": {
+              "cache": { "type": ["null", "string"] },
+              "entity_id": { "type": ["null", "string"] },
+              "language": { "example": "ru", "type": "string" },
+              "message": { "example": "My name is hanna", "type": "string" },
+              "options": { "example": "platform specific", "type": "string" }
+            },
+            "type": "object"
+          },
+          "domain": { "enum": ["tts"], "type": "string" },
+          "service": { "enum": ["google_translate_say"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "extended_openai_conversation.query_image",
+      "description": "Take in images and answer questions about them",
+      "parameters": {
+        "properties": {
+          "data": {
+            "properties": {
+              "config_entry": { "type": ["null", "string"] },
+              "images": {
+                "example": "{\"url\": \"https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Gfp-wisconsin-madison-the-nature-boardwalk.jpg/2560px-Gfp-wisconsin-madison-the-nature-boardwalk.jpg\"}",
+                "type": "string"
+              },
+              "max_tokens": { "example": "300", "type": "string" },
+              "model": { "example": "gpt-4-vision-preview", "type": "string" },
+              "prompt": { "example": "What’s in this image?", "type": "string" }
+            },
+            "type": "object"
+          },
+          "domain": {
+            "enum": ["extended_openai_conversation"],
+            "type": "string"
+          },
+          "service": { "enum": ["query_image"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "person.reload",
+      "description": "Reloads persons from the YAML-configuration.",
+      "parameters": {
+        "properties": {
+          "data": { "properties": {}, "type": "object" },
+          "domain": { "enum": ["person"], "type": "string" },
+          "service": { "enum": ["reload"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "recorder.enable",
+      "description": "Starts the recording of events and state changes.",
+      "parameters": {
+        "properties": {
+          "data": { "properties": {}, "type": "object" },
+          "domain": { "enum": ["recorder"], "type": "string" },
+          "service": { "enum": ["enable"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "recorder.purge",
+      "description": "Starts purge task - to clean up old data from your database.",
+      "parameters": {
+        "properties": {
+          "data": {
+            "properties": {
+              "apply_filter": { "type": ["null", "string"] },
+              "keep_days": { "type": ["null", "string"] },
+              "repack": { "type": ["null", "string"] }
+            },
+            "type": "object"
+          },
+          "domain": { "enum": ["recorder"], "type": "string" },
+          "service": { "enum": ["purge"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "recorder.disable",
+      "description": "Stops the recording of events and state changes.",
+      "parameters": {
+        "properties": {
+          "data": { "properties": {}, "type": "object" },
+          "domain": { "enum": ["recorder"], "type": "string" },
+          "service": { "enum": ["disable"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "recorder.purge_entities",
+      "description": "Starts a purge task to remove the data related to specific entities from your database.",
+      "parameters": {
+        "properties": {
+          "data": {
+            "properties": {
+              "domains": { "example": "sun", "type": "string" },
+              "entity_globs": {
+                "example": "domain*.object_id*",
+                "type": "string"
+              },
+              "keep_days": { "type": ["null", "string"] }
+            },
+            "type": "object"
+          },
+          "domain": { "enum": ["recorder"], "type": "string" },
+          "service": { "enum": ["purge_entities"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "cover.stop_cover_tilt",
+      "description": "Stops a tilting cover movement.",
+      "parameters": {
+        "properties": {
+          "data": { "properties": {}, "type": "object" },
+          "domain": { "enum": ["cover"], "type": "string" },
+          "service": { "enum": ["stop_cover_tilt"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "cover.open_cover_tilt",
+      "description": "Tilts a cover open.",
+      "parameters": {
+        "properties": {
+          "data": { "properties": {}, "type": "object" },
+          "domain": { "enum": ["cover"], "type": "string" },
+          "service": { "enum": ["open_cover_tilt"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "cover.toggle",
+      "description": "Toggles a cover open/closed.",
+      "parameters": {
+        "properties": {
+          "data": { "properties": {}, "type": "object" },
+          "domain": { "enum": ["cover"], "type": "string" },
+          "service": { "enum": ["toggle"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "cover.close_cover_tilt",
+      "description": "Tilts a cover to close.",
+      "parameters": {
+        "properties": {
+          "data": { "properties": {}, "type": "object" },
+          "domain": { "enum": ["cover"], "type": "string" },
+          "service": { "enum": ["close_cover_tilt"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "cover.stop_cover",
+      "description": "Stops the cover movement.",
+      "parameters": {
+        "properties": {
+          "data": { "properties": {}, "type": "object" },
+          "domain": { "enum": ["cover"], "type": "string" },
+          "service": { "enum": ["stop_cover"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "cover.toggle_cover_tilt",
+      "description": "Toggles a cover tilt open/closed.",
+      "parameters": {
+        "properties": {
+          "data": { "properties": {}, "type": "object" },
+          "domain": { "enum": ["cover"], "type": "string" },
+          "service": { "enum": ["toggle_cover_tilt"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "cover.close_cover",
+      "description": "Closes a cover.",
+      "parameters": {
+        "properties": {
+          "data": { "properties": {}, "type": "object" },
+          "domain": { "enum": ["cover"], "type": "string" },
+          "service": { "enum": ["close_cover"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "cover.open_cover",
+      "description": "Opens a cover.",
+      "parameters": {
+        "properties": {
+          "data": { "properties": {}, "type": "object" },
+          "domain": { "enum": ["cover"], "type": "string" },
+          "service": { "enum": ["open_cover"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "cover.set_cover_position",
+      "description": "Moves a cover to a specific position.",
+      "parameters": {
+        "properties": {
+          "data": {
+            "properties": { "position": { "type": ["null", "string"] } },
+            "type": "object"
+          },
+          "domain": { "enum": ["cover"], "type": "string" },
+          "service": { "enum": ["set_cover_position"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "cover.set_cover_tilt_position",
+      "description": "Moves a cover tilt to a specific position.",
+      "parameters": {
+        "properties": {
+          "data": {
+            "properties": { "tilt_position": { "type": ["null", "string"] } },
+            "type": "object"
+          },
+          "domain": { "enum": ["cover"], "type": "string" },
+          "service": { "enum": ["set_cover_tilt_position"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "input_boolean.turn_on",
+      "description": "Turns on the helper.",
+      "parameters": {
+        "properties": {
+          "data": { "properties": {}, "type": "object" },
+          "domain": { "enum": ["input_boolean"], "type": "string" },
+          "service": { "enum": ["turn_on"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "input_boolean.turn_off",
+      "description": "Turns off the helper.",
+      "parameters": {
+        "properties": {
+          "data": { "properties": {}, "type": "object" },
+          "domain": { "enum": ["input_boolean"], "type": "string" },
+          "service": { "enum": ["turn_off"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "input_boolean.toggle",
+      "description": "Toggles the helper on/off.",
+      "parameters": {
+        "properties": {
+          "data": { "properties": {}, "type": "object" },
+          "domain": { "enum": ["input_boolean"], "type": "string" },
+          "service": { "enum": ["toggle"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "input_boolean.reload",
+      "description": "Reloads helpers from the YAML-configuration.",
+      "parameters": {
+        "properties": {
+          "data": { "properties": {}, "type": "object" },
+          "domain": { "enum": ["input_boolean"], "type": "string" },
+          "service": { "enum": ["reload"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "logger.set_default_level",
+      "description": "Sets the default log level for integrations.",
+      "parameters": {
+        "properties": {
+          "data": {
+            "properties": { "level": { "type": ["null", "string"] } },
+            "type": "object"
+          },
+          "domain": { "enum": ["logger"], "type": "string" },
+          "service": { "enum": ["set_default_level"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "logger.set_level",
+      "description": "Sets the log level for one or more integrations.",
+      "parameters": {
+        "properties": {
+          "data": { "properties": {}, "type": "object" },
+          "domain": { "enum": ["logger"], "type": "string" },
+          "service": { "enum": ["set_level"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "persistent_notification.create",
+      "description": "Shows a notification on the **Notifications** panel.",
+      "parameters": {
+        "properties": {
+          "data": {
+            "properties": {
+              "message": {
+                "example": "Please check your configuration.yaml.",
+                "type": "string"
+              },
+              "notification_id": {
+                "example": 1234,
+                "maximum": 1234.0,
+                "minimum": 1234.0,
+                "type": "number"
+              },
+              "title": { "example": "Test notification", "type": "string" }
+            },
+            "type": "object"
+          },
+          "domain": { "enum": ["persistent_notification"], "type": "string" },
+          "service": { "enum": ["create"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "persistent_notification.dismiss",
+      "description": "Removes a notification from the **Notifications** panel.",
+      "parameters": {
+        "properties": {
+          "data": {
+            "properties": {
+              "notification_id": {
+                "example": 1234,
+                "maximum": 1234.0,
+                "minimum": 1234.0,
+                "type": "number"
+              }
+            },
+            "type": "object"
+          },
+          "domain": { "enum": ["persistent_notification"], "type": "string" },
+          "service": { "enum": ["dismiss"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "persistent_notification.dismiss_all",
+      "description": "Removes all notifications from the **Notifications** panel.",
+      "parameters": {
+        "properties": {
+          "data": { "properties": {}, "type": "object" },
+          "domain": { "enum": ["persistent_notification"], "type": "string" },
+          "service": { "enum": ["dismiss_all"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "counter.reset",
+      "description": "Resets a counter.",
+      "parameters": {
+        "properties": {
+          "data": { "properties": {}, "type": "object" },
+          "domain": { "enum": ["counter"], "type": "string" },
+          "service": { "enum": ["reset"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "counter.set_value",
+      "description": "Sets the counter value.",
+      "parameters": {
+        "properties": {
+          "data": {
+            "properties": { "value": { "type": ["null", "string"] } },
+            "type": "object"
+          },
+          "domain": { "enum": ["counter"], "type": "string" },
+          "service": { "enum": ["set_value"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "counter.decrement",
+      "description": "Decrements a counter.",
+      "parameters": {
+        "properties": {
+          "data": { "properties": {}, "type": "object" },
+          "domain": { "enum": ["counter"], "type": "string" },
+          "service": { "enum": ["decrement"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "counter.increment",
+      "description": "Increments a counter.",
+      "parameters": {
+        "properties": {
+          "data": { "properties": {}, "type": "object" },
+          "domain": { "enum": ["counter"], "type": "string" },
+          "service": { "enum": ["increment"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "fan.oscillate",
+      "description": "Controls oscillatation of the fan.",
+      "parameters": {
+        "properties": {
+          "data": {
+            "properties": { "oscillating": { "type": ["null", "string"] } },
+            "type": "object"
+          },
+          "domain": { "enum": ["fan"], "type": "string" },
+          "service": { "enum": ["oscillate"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "fan.toggle",
+      "description": "Toggles the fan on/off.",
+      "parameters": {
+        "properties": {
+          "data": { "properties": {}, "type": "object" },
+          "domain": { "enum": ["fan"], "type": "string" },
+          "service": { "enum": ["toggle"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "fan.set_preset_mode",
+      "description": "Sets preset mode.",
+      "parameters": {
+        "properties": {
+          "data": {
+            "properties": {
+              "preset_mode": { "example": "auto", "type": "string" }
+            },
+            "type": "object"
+          },
+          "domain": { "enum": ["fan"], "type": "string" },
+          "service": { "enum": ["set_preset_mode"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "fan.increase_speed",
+      "description": "Increases the speed of the fan.",
+      "parameters": {
+        "properties": {
+          "data": {
+            "properties": { "percentage_step": { "type": ["null", "string"] } },
+            "type": "object"
+          },
+          "domain": { "enum": ["fan"], "type": "string" },
+          "service": { "enum": ["increase_speed"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "fan.decrease_speed",
+      "description": "Decreases the speed of the fan.",
+      "parameters": {
+        "properties": {
+          "data": {
+            "properties": { "percentage_step": { "type": ["null", "string"] } },
+            "type": "object"
+          },
+          "domain": { "enum": ["fan"], "type": "string" },
+          "service": { "enum": ["decrease_speed"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "fan.set_percentage",
+      "description": "Sets the fan speed.",
+      "parameters": {
+        "properties": {
+          "data": {
+            "properties": { "percentage": { "type": ["null", "string"] } },
+            "type": "object"
+          },
+          "domain": { "enum": ["fan"], "type": "string" },
+          "service": { "enum": ["set_percentage"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "fan.turn_off",
+      "description": "Turns fan off.",
+      "parameters": {
+        "properties": {
+          "data": { "properties": {}, "type": "object" },
+          "domain": { "enum": ["fan"], "type": "string" },
+          "service": { "enum": ["turn_off"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "fan.set_direction",
+      "description": "Sets the fan rotation direction.",
+      "parameters": {
+        "properties": {
+          "data": {
+            "properties": { "direction": { "type": ["null", "string"] } },
+            "type": "object"
+          },
+          "domain": { "enum": ["fan"], "type": "string" },
+          "service": { "enum": ["set_direction"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "fan.turn_on",
+      "description": "Turns fan on.",
+      "parameters": {
+        "properties": {
+          "data": {
+            "properties": {
+              "percentage": { "type": ["null", "string"] },
+              "preset_mode": { "example": "auto", "type": "string" }
+            },
+            "type": "object"
+          },
+          "domain": { "enum": ["fan"], "type": "string" },
+          "service": { "enum": ["turn_on"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "select.select_option",
+      "description": "Selects an option.",
+      "parameters": {
+        "properties": {
+          "data": {
+            "properties": {
+              "option": { "example": "\"Item A\"", "type": "string" }
+            },
+            "type": "object"
+          },
+          "domain": { "enum": ["select"], "type": "string" },
+          "service": { "enum": ["select_option"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "select.select_first",
+      "description": "Selects the first option.",
+      "parameters": {
+        "properties": {
+          "data": { "properties": {}, "type": "object" },
+          "domain": { "enum": ["select"], "type": "string" },
+          "service": { "enum": ["select_first"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "select.select_next",
+      "description": "Selects the next option.",
+      "parameters": {
+        "properties": {
+          "data": {
+            "properties": { "cycle": { "type": ["null", "string"] } },
+            "type": "object"
+          },
+          "domain": { "enum": ["select"], "type": "string" },
+          "service": { "enum": ["select_next"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "select.select_previous",
+      "description": "Selects the previous option.",
+      "parameters": {
+        "properties": {
+          "data": {
+            "properties": { "cycle": { "type": ["null", "string"] } },
+            "type": "object"
+          },
+          "domain": { "enum": ["select"], "type": "string" },
+          "service": { "enum": ["select_previous"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "select.select_last",
+      "description": "Selects the last option.",
+      "parameters": {
+        "properties": {
+          "data": { "properties": {}, "type": "object" },
+          "domain": { "enum": ["select"], "type": "string" },
+          "service": { "enum": ["select_last"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "zone.reload",
+      "description": "Reloads zones from the YAML-configuration.",
+      "parameters": {
+        "properties": {
+          "data": { "properties": {}, "type": "object" },
+          "domain": { "enum": ["zone"], "type": "string" },
+          "service": { "enum": ["reload"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "input_number.decrement",
+      "description": "Decrements the current value by 1 step.",
+      "parameters": {
+        "properties": {
+          "data": { "properties": {}, "type": "object" },
+          "domain": { "enum": ["input_number"], "type": "string" },
+          "service": { "enum": ["decrement"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "input_number.reload",
+      "description": "Reloads helpers from the YAML-configuration.",
+      "parameters": {
+        "properties": {
+          "data": { "properties": {}, "type": "object" },
+          "domain": { "enum": ["input_number"], "type": "string" },
+          "service": { "enum": ["reload"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "input_number.increment",
+      "description": "Increments the value by 1 step.",
+      "parameters": {
+        "properties": {
+          "data": { "properties": {}, "type": "object" },
+          "domain": { "enum": ["input_number"], "type": "string" },
+          "service": { "enum": ["increment"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "input_number.set_value",
+      "description": "Sets the value.",
+      "parameters": {
+        "properties": {
+          "data": {
+            "properties": { "value": { "type": ["null", "string"] } },
+            "type": "object"
+          },
+          "domain": { "enum": ["input_number"], "type": "string" },
+          "service": { "enum": ["set_value"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "group.set",
+      "description": "Creates/Updates a user group.",
+      "parameters": {
+        "properties": {
+          "data": {
+            "properties": {
+              "add_entities": {
+                "example": "domain.entity_id1, domain.entity_id2",
+                "type": "string"
+              },
+              "all": { "type": ["null", "string"] },
+              "entities": {
+                "example": "domain.entity_id1, domain.entity_id2",
+                "type": "string"
+              },
+              "icon": { "example": "mdi:camera", "type": "string" },
+              "name": { "example": "My test group", "type": "string" },
+              "object_id": { "example": "test_group", "type": "string" },
+              "remove_entities": {
+                "example": "domain.entity_id1, domain.entity_id2",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          "domain": { "enum": ["group"], "type": "string" },
+          "service": { "enum": ["set"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "group.reload",
+      "description": "Reloads group configuration, entities, and notify services from YAML-configuration.",
+      "parameters": {
+        "properties": {
+          "data": { "properties": {}, "type": "object" },
+          "domain": { "enum": ["group"], "type": "string" },
+          "service": { "enum": ["reload"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "group.remove",
+      "description": "Removes a group.",
+      "parameters": {
+        "properties": {
+          "data": {
+            "properties": {
+              "object_id": { "example": "test_group", "type": "string" }
+            },
+            "type": "object"
+          },
+          "domain": { "enum": ["group"], "type": "string" },
+          "service": { "enum": ["remove"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "update.skip",
+      "description": "Marks currently available update as skipped.",
+      "parameters": {
+        "properties": {
+          "data": { "properties": {}, "type": "object" },
+          "domain": { "enum": ["update"], "type": "string" },
+          "service": { "enum": ["skip"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "update.install",
+      "description": "Installs an update for this device or service.",
+      "parameters": {
+        "properties": {
+          "data": {
+            "properties": {
+              "backup": { "type": ["null", "string"] },
+              "version": { "example": "1.0.0", "type": "string" }
+            },
+            "type": "object"
+          },
+          "domain": { "enum": ["update"], "type": "string" },
+          "service": { "enum": ["install"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "update.clear_skipped",
+      "description": "Removes the skipped version marker from an update.",
+      "parameters": {
+        "properties": {
+          "data": { "properties": {}, "type": "object" },
+          "domain": { "enum": ["update"], "type": "string" },
+          "service": { "enum": ["clear_skipped"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "siren.turn_off",
+      "description": "Turns the siren off.",
+      "parameters": {
+        "properties": {
+          "data": { "properties": {}, "type": "object" },
+          "domain": { "enum": ["siren"], "type": "string" },
+          "service": { "enum": ["turn_off"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "siren.turn_on",
+      "description": "Turns the siren on.",
+      "parameters": {
+        "properties": {
+          "data": {
+            "properties": {
+              "duration": {
+                "example": 15,
+                "maximum": 15.0,
+                "minimum": 15.0,
+                "type": "number"
+              },
+              "tone": { "example": "fire", "type": "string" },
+              "volume_level": {
+                "example": 0.5,
+                "maximum": 0.5,
+                "minimum": 0.5,
+                "type": "number"
+              }
+            },
+            "type": "object"
+          },
+          "domain": { "enum": ["siren"], "type": "string" },
+          "service": { "enum": ["turn_on"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "siren.toggle",
+      "description": "Toggles the siren on/off.",
+      "parameters": {
+        "properties": {
+          "data": { "properties": {}, "type": "object" },
+          "domain": { "enum": ["siren"], "type": "string" },
+          "service": { "enum": ["toggle"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "template.reload",
+      "description": "Reloads template entities from the YAML-configuration.",
+      "parameters": {
+        "properties": {
+          "data": { "properties": {}, "type": "object" },
+          "domain": { "enum": ["template"], "type": "string" },
+          "service": { "enum": ["reload"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "device_tracker.see",
+      "description": "Records a seen tracked device.",
+      "parameters": {
+        "properties": {
+          "data": {
+            "properties": {
+              "battery": { "type": ["null", "string"] },
+              "dev_id": { "example": "phonedave", "type": "string" },
+              "gps": { "example": "[51.509802, -0.086692]", "type": "string" },
+              "gps_accuracy": { "type": ["null", "string"] },
+              "host_name": { "example": "Dave", "type": "string" },
+              "location_name": { "example": "home", "type": "string" },
+              "mac": { "example": "FF:FF:FF:FF:FF:FF", "type": "string" }
+            },
+            "type": "object"
+          },
+          "domain": { "enum": ["device_tracker"], "type": "string" },
+          "service": { "enum": ["see"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "notify.persistent_notification",
+      "description": "Sends a notification that is visible in the **Notifications** panel.",
+      "parameters": {
+        "properties": {
+          "data": {
+            "properties": {
+              "data": { "example": "platform specific", "type": "string" },
+              "message": {
+                "example": "The garage door has been open for 10 minutes.",
+                "type": "string"
+              },
+              "title": {
+                "example": "Your Garage Door Friend",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          "domain": { "enum": ["notify"], "type": "string" },
+          "service": { "enum": ["persistent_notification"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "notify.tibber",
+      "description": "Sends a notification message using the tibber service.",
+      "parameters": {
+        "properties": {
+          "data": {
+            "properties": {
+              "data": { "example": "platform specific", "type": "string" },
+              "message": {
+                "example": "The garage door has been open for 10 minutes.",
+                "type": "string"
+              },
+              "target": { "example": "platform specific", "type": "string" },
+              "title": {
+                "example": "Your Garage Door Friend",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          "domain": { "enum": ["notify"], "type": "string" },
+          "service": { "enum": ["tibber"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "notify.mobile_app_asus_z01gd",
+      "description": "Sends a notification message using the mobile_app_asus_z01gd integration.",
+      "parameters": {
+        "properties": {
+          "data": {
+            "properties": {
+              "data": { "example": "platform specific", "type": "string" },
+              "message": {
+                "example": "The garage door has been open for 10 minutes.",
+                "type": "string"
+              },
+              "target": { "example": "platform specific", "type": "string" },
+              "title": {
+                "example": "Your Garage Door Friend",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          "domain": { "enum": ["notify"], "type": "string" },
+          "service": { "enum": ["mobile_app_asus_z01gd"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "notify.mobile_app_linuss_mac_mini",
+      "description": "Sends a notification message using the mobile_app_linuss_mac_mini integration.",
+      "parameters": {
+        "properties": {
+          "data": {
+            "properties": {
+              "data": { "example": "platform specific", "type": "string" },
+              "message": {
+                "example": "The garage door has been open for 10 minutes.",
+                "type": "string"
+              },
+              "target": { "example": "platform specific", "type": "string" },
+              "title": {
+                "example": "Your Garage Door Friend",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          "domain": { "enum": ["notify"], "type": "string" },
+          "service": {
+            "enum": ["mobile_app_linuss_mac_mini"],
+            "type": "string"
+          }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "notify.mobile_app_iphone_4",
+      "description": "Sends a notification message using the mobile_app_iphone_4 integration.",
+      "parameters": {
+        "properties": {
+          "data": {
+            "properties": {
+              "data": { "example": "platform specific", "type": "string" },
+              "message": {
+                "example": "The garage door has been open for 10 minutes.",
+                "type": "string"
+              },
+              "target": { "example": "platform specific", "type": "string" },
+              "title": {
+                "example": "Your Garage Door Friend",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          "domain": { "enum": ["notify"], "type": "string" },
+          "service": { "enum": ["mobile_app_iphone_4"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "notify.mobile_app_linus_iphone",
+      "description": "Sends a notification message using the mobile_app_linus_iphone integration.",
+      "parameters": {
+        "properties": {
+          "data": {
+            "properties": {
+              "data": { "example": "platform specific", "type": "string" },
+              "message": {
+                "example": "The garage door has been open for 10 minutes.",
+                "type": "string"
+              },
+              "target": { "example": "platform specific", "type": "string" },
+              "title": {
+                "example": "Your Garage Door Friend",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          "domain": { "enum": ["notify"], "type": "string" },
+          "service": { "enum": ["mobile_app_linus_iphone"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "notify.mobile_app_sm_t820",
+      "description": "Sends a notification message using the mobile_app_sm_t820 integration.",
+      "parameters": {
+        "properties": {
+          "data": {
+            "properties": {
+              "data": { "example": "platform specific", "type": "string" },
+              "message": {
+                "example": "The garage door has been open for 10 minutes.",
+                "type": "string"
+              },
+              "target": { "example": "platform specific", "type": "string" },
+              "title": {
+                "example": "Your Garage Door Friend",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          "domain": { "enum": ["notify"], "type": "string" },
+          "service": { "enum": ["mobile_app_sm_t820"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "notify.notify",
+      "description": "Sends a notification message using the notify service.",
+      "parameters": {
+        "properties": {
+          "data": {
+            "properties": {
+              "data": { "example": "platform specific", "type": "string" },
+              "message": {
+                "example": "The garage door has been open for 10 minutes.",
+                "type": "string"
+              },
+              "target": { "example": "platform specific", "type": "string" },
+              "title": {
+                "example": "Your Garage Door Friend",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          "domain": { "enum": ["notify"], "type": "string" },
+          "service": { "enum": ["notify"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "media_player.turn_off",
+      "description": "Turns off the power of the media player.",
+      "parameters": {
+        "properties": {
+          "data": { "properties": {}, "type": "object" },
+          "domain": { "enum": ["media_player"], "type": "string" },
+          "service": { "enum": ["turn_off"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "media_player.media_pause",
+      "description": "Pauses.",
+      "parameters": {
+        "properties": {
+          "data": { "properties": {}, "type": "object" },
+          "domain": { "enum": ["media_player"], "type": "string" },
+          "service": { "enum": ["media_pause"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "media_player.media_play",
+      "description": "Starts playing.",
+      "parameters": {
+        "properties": {
+          "data": { "properties": {}, "type": "object" },
+          "domain": { "enum": ["media_player"], "type": "string" },
+          "service": { "enum": ["media_play"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "media_player.turn_on",
+      "description": "Turns on the power of the media player.",
+      "parameters": {
+        "properties": {
+          "data": { "properties": {}, "type": "object" },
+          "domain": { "enum": ["media_player"], "type": "string" },
+          "service": { "enum": ["turn_on"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "media_player.play_media",
+      "description": "Starts playing specified media.",
+      "parameters": {
+        "properties": {
+          "data": {
+            "properties": {
+              "announce": { "example": "true", "type": "string" },
+              "enqueue": { "type": ["null", "string"] },
+              "media_content_id": {
+                "example": "https://home-assistant.io/images/cast/splash.png",
+                "type": "string"
+              },
+              "media_content_type": { "example": "music", "type": "string" }
+            },
+            "type": "object"
+          },
+          "domain": { "enum": ["media_player"], "type": "string" },
+          "service": { "enum": ["play_media"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "media_player.repeat_set",
+      "description": "Playback mode that plays the media in a loop.",
+      "parameters": {
+        "properties": {
+          "data": {
+            "properties": { "repeat": { "type": ["null", "string"] } },
+            "type": "object"
+          },
+          "domain": { "enum": ["media_player"], "type": "string" },
+          "service": { "enum": ["repeat_set"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "media_player.volume_set",
+      "description": "Sets the volume level.",
+      "parameters": {
+        "properties": {
+          "data": {
+            "properties": { "volume_level": { "type": ["null", "string"] } },
+            "type": "object"
+          },
+          "domain": { "enum": ["media_player"], "type": "string" },
+          "service": { "enum": ["volume_set"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "media_player.select_sound_mode",
+      "description": "Selects a specific sound mode.",
+      "parameters": {
+        "properties": {
+          "data": {
+            "properties": {
+              "sound_mode": { "example": "Music", "type": "string" }
+            },
+            "type": "object"
+          },
+          "domain": { "enum": ["media_player"], "type": "string" },
+          "service": { "enum": ["select_sound_mode"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "media_player.shuffle_set",
+      "description": "Playback mode that selects the media in randomized order.",
+      "parameters": {
+        "properties": {
+          "data": {
+            "properties": { "shuffle": { "type": ["null", "string"] } },
+            "type": "object"
+          },
+          "domain": { "enum": ["media_player"], "type": "string" },
+          "service": { "enum": ["shuffle_set"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "media_player.media_seek",
+      "description": "Allows you to go to a different part of the media that is currently playing.",
+      "parameters": {
+        "properties": {
+          "data": {
+            "properties": { "seek_position": { "type": ["null", "string"] } },
+            "type": "object"
+          },
+          "domain": { "enum": ["media_player"], "type": "string" },
+          "service": { "enum": ["media_seek"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "media_player.media_play_pause",
+      "description": "Toggles play/pause.",
+      "parameters": {
+        "properties": {
+          "data": { "properties": {}, "type": "object" },
+          "domain": { "enum": ["media_player"], "type": "string" },
+          "service": { "enum": ["media_play_pause"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "media_player.media_previous_track",
+      "description": "Selects the previous track.",
+      "parameters": {
+        "properties": {
+          "data": { "properties": {}, "type": "object" },
+          "domain": { "enum": ["media_player"], "type": "string" },
+          "service": { "enum": ["media_previous_track"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "media_player.media_stop",
+      "description": "Stops playing.",
+      "parameters": {
+        "properties": {
+          "data": { "properties": {}, "type": "object" },
+          "domain": { "enum": ["media_player"], "type": "string" },
+          "service": { "enum": ["media_stop"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "media_player.volume_up",
+      "description": "Turns up the volume.",
+      "parameters": {
+        "properties": {
+          "data": { "properties": {}, "type": "object" },
+          "domain": { "enum": ["media_player"], "type": "string" },
+          "service": { "enum": ["volume_up"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "media_player.volume_down",
+      "description": "Turns down the volume.",
+      "parameters": {
+        "properties": {
+          "data": { "properties": {}, "type": "object" },
+          "domain": { "enum": ["media_player"], "type": "string" },
+          "service": { "enum": ["volume_down"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "media_player.join",
+      "description": "Groups media players together for synchronous playback. Only works on supported multiroom audio systems.",
+      "parameters": {
+        "properties": {
+          "data": {
+            "properties": {
+              "group_members": {
+                "example": "- media_player.multiroom_player2\n- media_player.multiroom_player3\n",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          "domain": { "enum": ["media_player"], "type": "string" },
+          "service": { "enum": ["join"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "media_player.media_next_track",
+      "description": "Selects the next track.",
+      "parameters": {
+        "properties": {
+          "data": { "properties": {}, "type": "object" },
+          "domain": { "enum": ["media_player"], "type": "string" },
+          "service": { "enum": ["media_next_track"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "media_player.volume_mute",
+      "description": "Mutes or unmutes the media player.",
+      "parameters": {
+        "properties": {
+          "data": {
+            "properties": { "is_volume_muted": { "type": ["null", "string"] } },
+            "type": "object"
+          },
+          "domain": { "enum": ["media_player"], "type": "string" },
+          "service": { "enum": ["volume_mute"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "media_player.unjoin",
+      "description": "Removes the player from a group. Only works on platforms which support player groups.",
+      "parameters": {
+        "properties": {
+          "data": { "properties": {}, "type": "object" },
+          "domain": { "enum": ["media_player"], "type": "string" },
+          "service": { "enum": ["unjoin"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "media_player.clear_playlist",
+      "description": "Clears the playlist.",
+      "parameters": {
+        "properties": {
+          "data": { "properties": {}, "type": "object" },
+          "domain": { "enum": ["media_player"], "type": "string" },
+          "service": { "enum": ["clear_playlist"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "media_player.select_source",
+      "description": "Sends the media player the command to change input source.",
+      "parameters": {
+        "properties": {
+          "data": {
+            "properties": {
+              "source": { "example": "video1", "type": "string" }
+            },
+            "type": "object"
+          },
+          "domain": { "enum": ["media_player"], "type": "string" },
+          "service": { "enum": ["select_source"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "media_player.toggle",
+      "description": "Toggles a media player on/off.",
+      "parameters": {
+        "properties": {
+          "data": { "properties": {}, "type": "object" },
+          "domain": { "enum": ["media_player"], "type": "string" },
+          "service": { "enum": ["toggle"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "schedule.reload",
+      "description": "Reloads schedules from the YAML-configuration.",
+      "parameters": {
+        "properties": {
+          "data": { "properties": {}, "type": "object" },
+          "domain": { "enum": ["schedule"], "type": "string" },
+          "service": { "enum": ["reload"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "switch.turn_on",
+      "description": "Turns a switch on.",
+      "parameters": {
+        "properties": {
+          "data": { "properties": {}, "type": "object" },
+          "domain": { "enum": ["switch"], "type": "string" },
+          "service": { "enum": ["turn_on"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "switch.turn_off",
+      "description": "Turns a switch off.",
+      "parameters": {
+        "properties": {
+          "data": { "properties": {}, "type": "object" },
+          "domain": { "enum": ["switch"], "type": "string" },
+          "service": { "enum": ["turn_off"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "switch.toggle",
+      "description": "Toggles a switch on/off.",
+      "parameters": {
+        "properties": {
+          "data": { "properties": {}, "type": "object" },
+          "domain": { "enum": ["switch"], "type": "string" },
+          "service": { "enum": ["toggle"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "input_select.reload",
+      "description": "Reloads helpers from the YAML-configuration.",
+      "parameters": {
+        "properties": {
+          "data": { "properties": {}, "type": "object" },
+          "domain": { "enum": ["input_select"], "type": "string" },
+          "service": { "enum": ["reload"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "input_select.select_previous",
+      "description": "Selects the previous option.",
+      "parameters": {
+        "properties": {
+          "data": {
+            "properties": { "cycle": { "type": ["null", "string"] } },
+            "type": "object"
+          },
+          "domain": { "enum": ["input_select"], "type": "string" },
+          "service": { "enum": ["select_previous"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "input_select.set_options",
+      "description": "Sets the options.",
+      "parameters": {
+        "properties": {
+          "data": {
+            "properties": {
+              "options": {
+                "example": "[\"Item A\", \"Item B\", \"Item C\"]",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          "domain": { "enum": ["input_select"], "type": "string" },
+          "service": { "enum": ["set_options"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "input_select.select_first",
+      "description": "Selects the first option.",
+      "parameters": {
+        "properties": {
+          "data": { "properties": {}, "type": "object" },
+          "domain": { "enum": ["input_select"], "type": "string" },
+          "service": { "enum": ["select_first"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "input_select.select_next",
+      "description": "Select the next option.",
+      "parameters": {
+        "properties": {
+          "data": {
+            "properties": { "cycle": { "type": ["null", "string"] } },
+            "type": "object"
+          },
+          "domain": { "enum": ["input_select"], "type": "string" },
+          "service": { "enum": ["select_next"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "input_select.select_last",
+      "description": "Selects the last option.",
+      "parameters": {
+        "properties": {
+          "data": { "properties": {}, "type": "object" },
+          "domain": { "enum": ["input_select"], "type": "string" },
+          "service": { "enum": ["select_last"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "input_select.select_option",
+      "description": "Selects an option.",
+      "parameters": {
+        "properties": {
+          "data": {
+            "properties": {
+              "option": { "example": "\"Item A\"", "type": "string" }
+            },
+            "type": "object"
+          },
+          "domain": { "enum": ["input_select"], "type": "string" },
+          "service": { "enum": ["select_option"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "light.turn_on",
+      "description": "Turn on one or more lights and adjust properties of the light, even when they are turned on already.",
+      "parameters": {
+        "properties": {
+          "data": {
+            "properties": {
+              "brightness": { "type": ["null", "string"] },
+              "brightness_pct": { "type": ["null", "string"] },
+              "brightness_step": { "type": ["null", "string"] },
+              "brightness_step_pct": { "type": ["null", "string"] },
+              "color_name": { "type": ["null", "string"] },
+              "color_temp": { "type": ["null", "string"] },
+              "effect": { "type": ["null", "string"] },
+              "flash": { "type": ["null", "string"] },
+              "hs_color": { "example": "[300, 70]", "type": "string" },
+              "kelvin": { "type": ["null", "string"] },
+              "profile": { "example": "relax", "type": "string" },
+              "rgb_color": { "type": ["null", "string"] },
+              "rgbw_color": {
+                "example": "[255, 100, 100, 50]",
+                "type": "string"
+              },
+              "rgbww_color": {
+                "example": "[255, 100, 100, 50, 70]",
+                "type": "string"
+              },
+              "transition": { "type": ["null", "string"] },
+              "white": { "type": ["null", "string"] },
+              "xy_color": { "example": "[0.52, 0.43]", "type": "string" }
+            },
+            "type": "object"
+          },
+          "domain": { "enum": ["light"], "type": "string" },
+          "service": { "enum": ["turn_on"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "light.turn_off",
+      "description": "Turn off one or more lights.",
+      "parameters": {
+        "properties": {
+          "data": {
+            "properties": {
+              "flash": { "type": ["null", "string"] },
+              "transition": { "type": ["null", "string"] }
+            },
+            "type": "object"
+          },
+          "domain": { "enum": ["light"], "type": "string" },
+          "service": { "enum": ["turn_off"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "light.toggle",
+      "description": "Toggles one or more lights, from on to off, or, off to on, based on their current state.",
+      "parameters": {
+        "properties": {
+          "data": {
+            "properties": {
+              "brightness": { "type": ["null", "string"] },
+              "brightness_pct": { "type": ["null", "string"] },
+              "color_name": { "type": ["null", "string"] },
+              "color_temp": { "type": ["null", "string"] },
+              "effect": { "type": ["null", "string"] },
+              "flash": { "type": ["null", "string"] },
+              "hs_color": { "example": "[300, 70]", "type": "string" },
+              "kelvin": { "type": ["null", "string"] },
+              "profile": { "example": "relax", "type": "string" },
+              "rgb_color": { "example": "[255, 100, 100]", "type": "string" },
+              "transition": { "type": ["null", "string"] },
+              "white": { "type": ["null", "string"] },
+              "xy_color": { "example": "[0.52, 0.43]", "type": "string" }
+            },
+            "type": "object"
+          },
+          "domain": { "enum": ["light"], "type": "string" },
+          "service": { "enum": ["toggle"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "text.set_value",
+      "description": "Sets the value.",
+      "parameters": {
+        "properties": {
+          "data": {
+            "properties": {
+              "value": { "example": "Hello world!", "type": "string" }
+            },
+            "type": "object"
+          },
+          "domain": { "enum": ["text"], "type": "string" },
+          "service": { "enum": ["set_value"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "input_button.press",
+      "description": "Mimics the physical button press on the device.",
+      "parameters": {
+        "properties": {
+          "data": { "properties": {}, "type": "object" },
+          "domain": { "enum": ["input_button"], "type": "string" },
+          "service": { "enum": ["press"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "input_button.reload",
+      "description": "Reloads helpers from the YAML-configuration.",
+      "parameters": {
+        "properties": {
+          "data": { "properties": {}, "type": "object" },
+          "domain": { "enum": ["input_button"], "type": "string" },
+          "service": { "enum": ["reload"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "number.set_value",
+      "description": "Sets the value of a number.",
+      "parameters": {
+        "properties": {
+          "data": {
+            "properties": {
+              "value": {
+                "example": 42,
+                "maximum": 42.0,
+                "minimum": 42.0,
+                "type": "number"
+              }
+            },
+            "type": "object"
+          },
+          "domain": { "enum": ["number"], "type": "string" },
+          "service": { "enum": ["set_value"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "cloud.remote_disconnect",
+      "description": "Disconnects the Home Assistant UI from the Home Assistant Cloud. You will no longer be able to access your Home Assistant instance from outside your local network.",
+      "parameters": {
+        "properties": {
+          "data": { "properties": {}, "type": "object" },
+          "domain": { "enum": ["cloud"], "type": "string" },
+          "service": { "enum": ["remote_disconnect"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "cloud.remote_connect",
+      "description": "Makes the instance UI accessible from outside of the local network by using Home Assistant Cloud.",
+      "parameters": {
+        "properties": {
+          "data": { "properties": {}, "type": "object" },
+          "domain": { "enum": ["cloud"], "type": "string" },
+          "service": { "enum": ["remote_connect"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "homekit.reload",
+      "description": "Reloads homekit and re-process YAML-configuration.",
+      "parameters": {
+        "properties": {
+          "data": { "properties": {}, "type": "object" },
+          "domain": { "enum": ["homekit"], "type": "string" },
+          "service": { "enum": ["reload"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "homekit.reset_accessory",
+      "description": "Resets a HomeKit accessory.",
+      "parameters": {
+        "properties": {
+          "data": { "properties": {}, "type": "object" },
+          "domain": { "enum": ["homekit"], "type": "string" },
+          "service": { "enum": ["reset_accessory"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "homekit.unpair",
+      "description": "Forcefully removes all pairings from an accessory to allow re-pairing. Use this service if the accessory is no longer responsive, and you want to avoid deleting and re-adding the entry. Room locations, and accessory preferences will be lost.",
+      "parameters": {
+        "properties": {
+          "data": { "properties": {}, "type": "object" },
+          "domain": { "enum": ["homekit"], "type": "string" },
+          "service": { "enum": ["unpair"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "frontend.reload_themes",
+      "description": "Reloads themes from the YAML-configuration.",
+      "parameters": {
+        "properties": {
+          "data": { "properties": {}, "type": "object" },
+          "domain": { "enum": ["frontend"], "type": "string" },
+          "service": { "enum": ["reload_themes"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "frontend.set_theme",
+      "description": "Sets the default theme Home Assistant uses. Can be overridden by a user.",
+      "parameters": {
+        "properties": {
+          "data": {
+            "properties": {
+              "mode": { "type": ["null", "string"] },
+              "name": { "example": "default", "type": "string" }
+            },
+            "type": "object"
+          },
+          "domain": { "enum": ["frontend"], "type": "string" },
+          "service": { "enum": ["set_theme"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "watchman.report",
+      "description": "Run watchman report",
+      "parameters": {
+        "properties": {
+          "data": {
+            "properties": {
+              "chunk_size": { "example": true, "type": "boolean" },
+              "create_file": { "example": true, "type": "boolean" },
+              "data": { "example": "parse_mode: html", "type": "string" },
+              "parse_config": { "example": true, "type": "boolean" },
+              "send_notification": { "example": true, "type": "boolean" },
+              "service": { "example": "notify.telegram", "type": "string" }
+            },
+            "type": "object"
+          },
+          "domain": { "enum": ["watchman"], "type": "string" },
+          "service": { "enum": ["report"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "camera.turn_on",
+      "description": "Turns on the camera.",
+      "parameters": {
+        "properties": {
+          "data": { "properties": {}, "type": "object" },
+          "domain": { "enum": ["camera"], "type": "string" },
+          "service": { "enum": ["turn_on"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "camera.disable_motion_detection",
+      "description": "Disables the motion detection.",
+      "parameters": {
+        "properties": {
+          "data": { "properties": {}, "type": "object" },
+          "domain": { "enum": ["camera"], "type": "string" },
+          "service": { "enum": ["disable_motion_detection"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "camera.enable_motion_detection",
+      "description": "Enables the motion detection.",
+      "parameters": {
+        "properties": {
+          "data": { "properties": {}, "type": "object" },
+          "domain": { "enum": ["camera"], "type": "string" },
+          "service": { "enum": ["enable_motion_detection"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "camera.play_stream",
+      "description": "Plays the camera stream on a supported media player.",
+      "parameters": {
+        "properties": {
+          "data": {
+            "properties": {
+              "format": { "type": ["null", "string"] },
+              "media_player": { "type": ["null", "string"] }
+            },
+            "type": "object"
+          },
+          "domain": { "enum": ["camera"], "type": "string" },
+          "service": { "enum": ["play_stream"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "camera.record",
+      "description": "Creates a recording of a live camera feed.",
+      "parameters": {
+        "properties": {
+          "data": {
+            "properties": {
+              "duration": { "type": ["null", "string"] },
+              "filename": {
+                "example": "/tmp/snapshot_{{ entity_id.name }}.mp4",
+                "type": "string"
+              },
+              "lookback": { "type": ["null", "string"] }
+            },
+            "type": "object"
+          },
+          "domain": { "enum": ["camera"], "type": "string" },
+          "service": { "enum": ["record"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "camera.snapshot",
+      "description": "Takes a snapshot from a camera.",
+      "parameters": {
+        "properties": {
+          "data": {
+            "properties": {
+              "filename": {
+                "example": "/tmp/snapshot_{{ entity_id.name }}.jpg",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          "domain": { "enum": ["camera"], "type": "string" },
+          "service": { "enum": ["snapshot"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "camera.turn_off",
+      "description": "Turns off the camera.",
+      "parameters": {
+        "properties": {
+          "data": { "properties": {}, "type": "object" },
+          "domain": { "enum": ["camera"], "type": "string" },
+          "service": { "enum": ["turn_off"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "alarm_control_panel.alarm_arm_custom_bypass",
+      "description": "Arms the alarm while allowing to bypass a custom area.",
+      "parameters": {
+        "properties": {
+          "data": {
+            "properties": { "code": { "example": "1234", "type": "string" } },
+            "type": "object"
+          },
+          "domain": { "enum": ["alarm_control_panel"], "type": "string" },
+          "service": { "enum": ["alarm_arm_custom_bypass"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "alarm_control_panel.alarm_arm_home",
+      "description": "Sets the alarm to: _armed, but someone is home_.",
+      "parameters": {
+        "properties": {
+          "data": {
+            "properties": { "code": { "example": "1234", "type": "string" } },
+            "type": "object"
+          },
+          "domain": { "enum": ["alarm_control_panel"], "type": "string" },
+          "service": { "enum": ["alarm_arm_home"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "alarm_control_panel.alarm_arm_night",
+      "description": "Sets the alarm to: _armed for the night_.",
+      "parameters": {
+        "properties": {
+          "data": {
+            "properties": { "code": { "example": "1234", "type": "string" } },
+            "type": "object"
+          },
+          "domain": { "enum": ["alarm_control_panel"], "type": "string" },
+          "service": { "enum": ["alarm_arm_night"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "alarm_control_panel.alarm_arm_vacation",
+      "description": "Sets the alarm to: _armed for vacation_.",
+      "parameters": {
+        "properties": {
+          "data": {
+            "properties": { "code": { "example": "1234", "type": "string" } },
+            "type": "object"
+          },
+          "domain": { "enum": ["alarm_control_panel"], "type": "string" },
+          "service": { "enum": ["alarm_arm_vacation"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "alarm_control_panel.alarm_trigger",
+      "description": "Enables an external alarm trigger.",
+      "parameters": {
+        "properties": {
+          "data": {
+            "properties": { "code": { "example": "1234", "type": "string" } },
+            "type": "object"
+          },
+          "domain": { "enum": ["alarm_control_panel"], "type": "string" },
+          "service": { "enum": ["alarm_trigger"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "alarm_control_panel.alarm_arm_away",
+      "description": "Sets the alarm to: _armed, no one home_.",
+      "parameters": {
+        "properties": {
+          "data": {
+            "properties": { "code": { "example": "1234", "type": "string" } },
+            "type": "object"
+          },
+          "domain": { "enum": ["alarm_control_panel"], "type": "string" },
+          "service": { "enum": ["alarm_arm_away"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "alarm_control_panel.alarm_disarm",
+      "description": "Disarms the alarm.",
+      "parameters": {
+        "properties": {
+          "data": {
+            "properties": { "code": { "example": "1234", "type": "string" } },
+            "type": "object"
+          },
+          "domain": { "enum": ["alarm_control_panel"], "type": "string" },
+          "service": { "enum": ["alarm_disarm"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "button.press",
+      "description": "Press the button entity.",
+      "parameters": {
+        "properties": {
+          "data": { "properties": {}, "type": "object" },
+          "domain": { "enum": ["button"], "type": "string" },
+          "service": { "enum": ["press"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "automation.trigger",
+      "description": "Triggers the actions of an automation.",
+      "parameters": {
+        "properties": {
+          "data": {
+            "properties": { "skip_condition": { "type": ["null", "string"] } },
+            "type": "object"
+          },
+          "domain": { "enum": ["automation"], "type": "string" },
+          "service": { "enum": ["trigger"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "automation.toggle",
+      "description": "Toggles (enable / disable) an automation.",
+      "parameters": {
+        "properties": {
+          "data": { "properties": {}, "type": "object" },
+          "domain": { "enum": ["automation"], "type": "string" },
+          "service": { "enum": ["toggle"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "automation.turn_off",
+      "description": "Disables an automation.",
+      "parameters": {
+        "properties": {
+          "data": {
+            "properties": { "stop_actions": { "type": ["null", "string"] } },
+            "type": "object"
+          },
+          "domain": { "enum": ["automation"], "type": "string" },
+          "service": { "enum": ["turn_off"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "automation.reload",
+      "description": "Reloads the automation configuration.",
+      "parameters": {
+        "properties": {
+          "data": { "properties": {}, "type": "object" },
+          "domain": { "enum": ["automation"], "type": "string" },
+          "service": { "enum": ["reload"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "automation.turn_on",
+      "description": "Enables an automation.",
+      "parameters": {
+        "properties": {
+          "data": { "properties": {}, "type": "object" },
+          "domain": { "enum": ["automation"], "type": "string" },
+          "service": { "enum": ["turn_on"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "logbook.log",
+      "description": "Creates a custom entry in the logbook.",
+      "parameters": {
+        "properties": {
+          "data": {
+            "properties": {
+              "domain": { "example": "light", "type": "string" },
+              "entity_id": { "type": ["null", "string"] },
+              "message": { "example": "is being used", "type": "string" },
+              "name": { "example": "Kitchen", "type": "string" }
+            },
+            "type": "object"
+          },
+          "domain": { "enum": ["logbook"], "type": "string" },
+          "service": { "enum": ["log"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "vacuum.turn_off",
+      "description": "Stops the current cleaning task and returns to its dock.",
+      "parameters": {
+        "properties": {
+          "data": { "properties": {}, "type": "object" },
+          "domain": { "enum": ["vacuum"], "type": "string" },
+          "service": { "enum": ["turn_off"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "vacuum.start_pause",
+      "description": "Starts, pauses, or resumes the cleaning task.",
+      "parameters": {
+        "properties": {
+          "data": { "properties": {}, "type": "object" },
+          "domain": { "enum": ["vacuum"], "type": "string" },
+          "service": { "enum": ["start_pause"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "vacuum.turn_on",
+      "description": "Starts a new cleaning task.",
+      "parameters": {
+        "properties": {
+          "data": { "properties": {}, "type": "object" },
+          "domain": { "enum": ["vacuum"], "type": "string" },
+          "service": { "enum": ["turn_on"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "vacuum.clean_spot",
+      "description": "Tells the vacuum cleaner to do a spot clean-up.",
+      "parameters": {
+        "properties": {
+          "data": { "properties": {}, "type": "object" },
+          "domain": { "enum": ["vacuum"], "type": "string" },
+          "service": { "enum": ["clean_spot"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "vacuum.return_to_base",
+      "description": "Tells the vacuum cleaner to return to its dock.",
+      "parameters": {
+        "properties": {
+          "data": { "properties": {}, "type": "object" },
+          "domain": { "enum": ["vacuum"], "type": "string" },
+          "service": { "enum": ["return_to_base"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "vacuum.stop",
+      "description": "Stops the current cleaning task.",
+      "parameters": {
+        "properties": {
+          "data": { "properties": {}, "type": "object" },
+          "domain": { "enum": ["vacuum"], "type": "string" },
+          "service": { "enum": ["stop"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "vacuum.locate",
+      "description": "Locates the vacuum cleaner robot.",
+      "parameters": {
+        "properties": {
+          "data": { "properties": {}, "type": "object" },
+          "domain": { "enum": ["vacuum"], "type": "string" },
+          "service": { "enum": ["locate"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "vacuum.send_command",
+      "description": "Sends a command to the vacuum cleaner.",
+      "parameters": {
+        "properties": {
+          "data": {
+            "properties": {
+              "command": { "example": "set_dnd_timer", "type": "string" },
+              "params": {
+                "example": "{ \"key\": \"value\" }",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          "domain": { "enum": ["vacuum"], "type": "string" },
+          "service": { "enum": ["send_command"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "vacuum.start",
+      "description": "Starts or resumes the cleaning task.",
+      "parameters": {
+        "properties": {
+          "data": { "properties": {}, "type": "object" },
+          "domain": { "enum": ["vacuum"], "type": "string" },
+          "service": { "enum": ["start"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "vacuum.set_fan_speed",
+      "description": "Sets the fan speed of the vacuum cleaner.",
+      "parameters": {
+        "properties": {
+          "data": {
+            "properties": {
+              "fan_speed": { "example": "low", "type": "string" }
+            },
+            "type": "object"
+          },
+          "domain": { "enum": ["vacuum"], "type": "string" },
+          "service": { "enum": ["set_fan_speed"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "vacuum.pause",
+      "description": "Pauses the cleaning task.",
+      "parameters": {
+        "properties": {
+          "data": { "properties": {}, "type": "object" },
+          "domain": { "enum": ["vacuum"], "type": "string" },
+          "service": { "enum": ["pause"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "vacuum.toggle",
+      "description": "Toggles the vacuum cleaner on/off.",
+      "parameters": {
+        "properties": {
+          "data": { "properties": {}, "type": "object" },
+          "domain": { "enum": ["vacuum"], "type": "string" },
+          "service": { "enum": ["toggle"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "water_heater.set_operation_mode",
+      "description": "Sets the operation mode.",
+      "parameters": {
+        "properties": {
+          "data": {
+            "properties": {
+              "operation_mode": { "example": "eco", "type": "string" }
+            },
+            "type": "object"
+          },
+          "domain": { "enum": ["water_heater"], "type": "string" },
+          "service": { "enum": ["set_operation_mode"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "water_heater.set_away_mode",
+      "description": "Turns away mode on/off.",
+      "parameters": {
+        "properties": {
+          "data": {
+            "properties": { "away_mode": { "type": ["null", "string"] } },
+            "type": "object"
+          },
+          "domain": { "enum": ["water_heater"], "type": "string" },
+          "service": { "enum": ["set_away_mode"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "water_heater.turn_on",
+      "description": "Turns water heater on.",
+      "parameters": {
+        "properties": {
+          "data": { "properties": {}, "type": "object" },
+          "domain": { "enum": ["water_heater"], "type": "string" },
+          "service": { "enum": ["turn_on"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "water_heater.set_temperature",
+      "description": "Sets the target temperature.",
+      "parameters": {
+        "properties": {
+          "data": {
+            "properties": {
+              "operation_mode": { "example": "eco", "type": "string" },
+              "temperature": { "type": ["null", "string"] }
+            },
+            "type": "object"
+          },
+          "domain": { "enum": ["water_heater"], "type": "string" },
+          "service": { "enum": ["set_temperature"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "water_heater.turn_off",
+      "description": "Turns water heater off.",
+      "parameters": {
+        "properties": {
+          "data": { "properties": {}, "type": "object" },
+          "domain": { "enum": ["water_heater"], "type": "string" },
+          "service": { "enum": ["turn_off"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "calendar.create_event",
+      "description": "Adds a new calendar event.",
+      "parameters": {
+        "properties": {
+          "data": {
+            "properties": {
+              "description": {
+                "example": "Meeting to provide technical review for 'Phoenix' design.",
+                "type": "string"
+              },
+              "end_date": { "example": "2022-03-23", "type": "string" },
+              "end_date_time": {
+                "example": "2022-03-22 22:00:00",
+                "type": "string"
+              },
+              "in": {
+                "example": "{\"days\": 2} or {\"weeks\": 2}",
+                "type": "string"
+              },
+              "location": {
+                "example": "Conference Room - F123, Bldg. 002",
+                "type": "string"
+              },
+              "start_date": { "example": "2022-03-22", "type": "string" },
+              "start_date_time": {
+                "example": "2022-03-22 20:00:00",
+                "type": "string"
+              },
+              "summary": { "example": "Department Party", "type": "string" }
+            },
+            "type": "object"
+          },
+          "domain": { "enum": ["calendar"], "type": "string" },
+          "service": { "enum": ["create_event"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "calendar.list_events",
+      "description": "Lists events on a calendar within a time range.",
+      "parameters": {
+        "properties": {
+          "data": {
+            "properties": {
+              "duration": { "type": ["null", "string"] },
+              "end_date_time": {
+                "example": "2022-03-22 22:00:00",
+                "type": "string"
+              },
+              "start_date_time": {
+                "example": "2022-03-22 20:00:00",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          "domain": { "enum": ["calendar"], "type": "string" },
+          "service": { "enum": ["list_events"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "calendar.get_events",
+      "description": "Get events on a calendar within a time range.",
+      "parameters": {
+        "properties": {
+          "data": {
+            "properties": {
+              "duration": { "type": ["null", "string"] },
+              "end_date_time": {
+                "example": "2022-03-22 22:00:00",
+                "type": "string"
+              },
+              "start_date_time": {
+                "example": "2022-03-22 20:00:00",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          "domain": { "enum": ["calendar"], "type": "string" },
+          "service": { "enum": ["get_events"], "type": "string" }
+        },
+        "required": ["domain", "service", "data"],
+        "type": "object"
+      }
+    }
+  }
+]

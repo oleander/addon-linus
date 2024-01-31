@@ -1,0 +1,288 @@
+[
+  {
+    "type": "function",
+    "function": {
+      "name": "light.turn_on",
+      "description": "Turn on one or more lights and adjust properties of the light, even when they are turned on already.",
+      "parameters": {
+        "properties": {
+          "brightness": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "brightness_pct": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "brightness_step": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "brightness_step_pct": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "color_name": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "color_temp": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "effect": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "entity_id": {
+            "description": "Entity ID to target",
+            "examples": [
+              "light.living_room"
+            ],
+            "type": "string"
+          },
+          "flash": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "hs_color": {
+            "examples": [
+              300,
+              70
+            ],
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "kelvin": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "profile": {
+            "type": "string"
+          },
+          "rgb_color": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "rgbw_color": {
+            "examples": [
+              255,
+              100,
+              100,
+              50
+            ],
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "rgbww_color": {
+            "examples": [
+              255,
+              100,
+              100,
+              50,
+              70
+            ],
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "transition": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "white": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "xy_color": {
+            "examples": [
+              0.52,
+              0.43
+            ],
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "entity_id"
+        ],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "light.toggle",
+      "description": "Toggles one or more lights, from on to off, or, off to on, based on their current state.",
+      "parameters": {
+        "properties": {
+          "brightness": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "brightness_pct": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "color_name": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "color_temp": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "effect": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "entity_id": {
+            "description": "Entity ID to target",
+            "examples": [
+              "light.living_room"
+            ],
+            "type": "string"
+          },
+          "flash": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "hs_color": {
+            "examples": [
+              300,
+              70
+            ],
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "kelvin": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "profile": {
+            "type": "string"
+          },
+          "rgb_color": {
+            "examples": [
+              255,
+              100,
+              100
+            ],
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "transition": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "white": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "xy_color": {
+            "examples": [
+              0.52,
+              0.43
+            ],
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "entity_id"
+        ],
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "light.turn_off",
+      "description": "Turn off one or more lights.",
+      "parameters": {
+        "properties": {
+          "entity_id": {
+            "description": "Entity ID to target",
+            "examples": [
+              "light.living_room"
+            ],
+            "type": "string"
+          },
+          "flash": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "transition": {
+            "type": [
+              "null",
+              "string"
+            ]
+          }
+        },
+        "required": [
+          "entity_id"
+        ],
+        "type": "object"
+      }
+    }
+  }
+]

@@ -1,0 +1,18 @@
+{
+  "type": "function",
+  "function": {
+    "name": "light.turn_off",
+    "description": "Home Assistant service call for turning off a light",
+    "parameters": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["entity_id"],
+      "properties": {
+        "entity_id": {
+          "type": "array",
+          "items": { "type": "string", "pattern": "^[a-z_]+\\.[a-z0-9_]+$" }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,1441 @@
+{
+  "select": {
+    "select_option": {
+      "description": "Selects an option.",
+      "fields": { "option": { "example": "\"Item A\"" } }
+    },
+    "select_previous": {
+      "description": "Selects the previous option.",
+      "fields": { "cycle": { "example": null } }
+    },
+    "select_first": {
+      "description": "Selects the first option.",
+      "fields": {}
+    },
+    "select_last": { "description": "Selects the last option.", "fields": {} },
+    "select_next": {
+      "description": "Selects the next option.",
+      "fields": { "cycle": { "example": null } }
+    }
+  },
+  "group": {
+    "reload": {
+      "description": "Reloads group configuration, entities, and notify services from YAML-configuration.",
+      "fields": {}
+    },
+    "remove": {
+      "description": "Removes a group.",
+      "fields": { "object_id": { "example": "test_group" } }
+    },
+    "set": {
+      "description": "Creates/Updates a user group.",
+      "fields": {
+        "remove_entities": {
+          "example": "domain.entity_id1, domain.entity_id2"
+        },
+        "all": { "example": null },
+        "add_entities": { "example": "domain.entity_id1, domain.entity_id2" },
+        "entities": { "example": "domain.entity_id1, domain.entity_id2" },
+        "name": { "example": "My test group" },
+        "icon": { "example": "mdi:camera" },
+        "object_id": { "example": "test_group" }
+      }
+    }
+  },
+  "valve": {
+    "toggle": { "description": "Toggles a valve open/closed.", "fields": {} },
+    "stop_valve": { "description": "Stops the valve movement.", "fields": {} },
+    "close_valve": { "description": "Closes a valve.", "fields": {} },
+    "set_valve_position": {
+      "description": "Moves a valve to a specific position.",
+      "fields": { "position": { "example": null } }
+    },
+    "open_valve": { "description": "Opens a valve.", "fields": {} }
+  },
+  "adguard": {
+    "add_url": {
+      "description": "Add a new filter subscription to AdGuard Home.",
+      "fields": {
+        "url": { "example": "https://www.example.com/filter/1.txt" },
+        "name": { "example": "Example" }
+      }
+    },
+    "disable_url": {
+      "description": "Disables a filter subscription in AdGuard Home.",
+      "fields": { "url": { "example": "https://www.example.com/filter/1.txt" } }
+    },
+    "enable_url": {
+      "description": "Enables a filter subscription in AdGuard Home.",
+      "fields": { "url": { "example": "https://www.example.com/filter/1.txt" } }
+    },
+    "refresh": {
+      "description": "Refresh all filter subscriptions in AdGuard Home.",
+      "fields": { "force": { "example": null } }
+    },
+    "remove_url": {
+      "description": "Removes a filter subscription from AdGuard Home.",
+      "fields": { "url": { "example": "https://www.example.com/filter/1.txt" } }
+    }
+  },
+  "timer": {
+    "cancel": { "description": "Cancels a timer.", "fields": {} },
+    "start": {
+      "description": "Starts a timer.",
+      "fields": { "duration": { "example": "00:01:00 or 60" } }
+    },
+    "finish": { "description": "Finishes a timer.", "fields": {} },
+    "change": {
+      "description": "Changes a timer.",
+      "fields": { "duration": { "example": "00:01:00, 60 or -60" } }
+    },
+    "pause": { "description": "Pauses a timer.", "fields": {} },
+    "reload": {
+      "description": "Reloads timers from the YAML-configuration.",
+      "fields": {}
+    }
+  },
+  "cloud": {
+    "remote_disconnect": {
+      "description": "Disconnects the Home Assistant UI from the Home Assistant Cloud. You will no longer be able to access your Home Assistant instance from outside your local network.",
+      "fields": {}
+    },
+    "remote_connect": {
+      "description": "Makes the instance UI accessible from outside of the local network by using Home Assistant Cloud.",
+      "fields": {}
+    }
+  },
+  "person": {
+    "reload": {
+      "description": "Reloads persons from the YAML-configuration.",
+      "fields": {}
+    }
+  },
+  "input_select": {
+    "select_option": {
+      "description": "Selects an option.",
+      "fields": { "option": { "example": "\"Item A\"" } }
+    },
+    "reload": {
+      "description": "Reloads helpers from the YAML-configuration.",
+      "fields": {}
+    },
+    "select_next": {
+      "description": "Select the next option.",
+      "fields": { "cycle": { "example": null } }
+    },
+    "set_options": {
+      "description": "Sets the options.",
+      "fields": {
+        "options": { "example": "[\"Item A\", \"Item B\", \"Item C\"]" }
+      }
+    },
+    "select_first": {
+      "description": "Selects the first option.",
+      "fields": {}
+    },
+    "select_last": { "description": "Selects the last option.", "fields": {} },
+    "select_previous": {
+      "description": "Selects the previous option.",
+      "fields": { "cycle": { "example": null } }
+    }
+  },
+  "input_button": {
+    "reload": {
+      "description": "Reloads helpers from the YAML-configuration.",
+      "fields": {}
+    },
+    "press": {
+      "description": "Mimics the physical button press on the device.",
+      "fields": {}
+    }
+  },
+  "tts": {
+    "google_translate_say": {
+      "description": "Say something using text-to-speech on a media player with google_translate.",
+      "fields": {
+        "entity_id": { "example": null },
+        "options": { "example": "platform specific" },
+        "message": { "example": "My name is hanna" },
+        "cache": { "example": null },
+        "language": { "example": "ru" }
+      }
+    },
+    "speak": {
+      "description": "Speaks something using text-to-speech on a media player.",
+      "fields": {
+        "options": { "example": "platform specific" },
+        "media_player_entity_id": { "example": null },
+        "language": { "example": "ru" },
+        "cache": { "example": null },
+        "message": { "example": "My name is hanna" }
+      }
+    },
+    "cloud_say": {
+      "description": "Say something using text-to-speech on a media player with cloud.",
+      "fields": {
+        "options": { "example": "platform specific" },
+        "language": { "example": "ru" },
+        "cache": { "example": null },
+        "message": { "example": "My name is hanna" },
+        "entity_id": { "example": null }
+      }
+    },
+    "clear_cache": {
+      "description": "Removes all cached text-to-speech files and purges the memory.",
+      "fields": {}
+    }
+  },
+  "ffmpeg": {
+    "restart": {
+      "description": "Sends a restart command to a ffmpeg based sensor.",
+      "fields": { "entity_id": { "example": null } }
+    },
+    "stop": {
+      "description": "Sends a stop command to a ffmpeg based sensor.",
+      "fields": { "entity_id": { "example": null } }
+    },
+    "start": {
+      "description": "Sends a start command to a ffmpeg based sensor.",
+      "fields": { "entity_id": { "example": null } }
+    }
+  },
+  "zha": {
+    "issue_zigbee_group_command": {
+      "description": "Issue command on the specified cluster on the specified group.",
+      "fields": {
+        "cluster_id": { "example": null },
+        "cluster_type": { "example": null },
+        "group": { "example": 546 },
+        "manufacturer": { "example": 252 },
+        "args": { "example": "[arg1, arg2, argN]" },
+        "command": { "example": null }
+      }
+    },
+    "clear_lock_user_code": {
+      "description": "Clears a user code from a lock.",
+      "fields": { "code_slot": { "example": 1 } }
+    },
+    "remove": {
+      "description": "Removes a node from the Zigbee network.",
+      "fields": { "ieee": { "example": "00:0d:6f:00:05:7d:2d:34" } }
+    },
+    "issue_zigbee_cluster_command": {
+      "description": "Issues a command on the specified cluster on the specified entity.",
+      "fields": {
+        "command_type": { "example": null },
+        "cluster_type": { "example": null },
+        "endpoint_id": { "example": null },
+        "manufacturer": { "example": 252 },
+        "command": { "example": null },
+        "ieee": { "example": "00:0d:6f:00:05:7d:2d:34" },
+        "params": { "example": null },
+        "args": { "example": "[arg1, arg2, argN]" },
+        "cluster_id": { "example": null }
+      }
+    },
+    "set_zigbee_cluster_attribute": {
+      "description": "Sets an attribute value for the specified cluster on the specified entity.",
+      "fields": {
+        "value": { "example": 1 },
+        "cluster_type": { "example": null },
+        "ieee": { "example": "00:0d:6f:00:05:7d:2d:34" },
+        "cluster_id": { "example": null },
+        "attribute": { "example": 0 },
+        "endpoint_id": { "example": null },
+        "manufacturer": { "example": 252 }
+      }
+    },
+    "set_lock_user_code": {
+      "description": "Sets a user code on a lock.",
+      "fields": {
+        "code_slot": { "example": 1 },
+        "user_code": { "example": 1234 }
+      }
+    },
+    "permit": {
+      "description": "Allows nodes to join the Zigbee network.",
+      "fields": {
+        "duration": { "example": null },
+        "ieee": { "example": "00:0d:6f:00:05:7d:2d:34" },
+        "qr_code": {
+          "example": "Z:000D6FFFFED4163B$I:52797BF4A5084DAA8E1712B61741CA024051"
+        },
+        "install_code": {
+          "example": "1234-5678-1234-5678-AABB-CCDD-AABB-CCDD-EEFF"
+        },
+        "source_ieee": { "example": "00:0a:bf:00:01:10:23:35" }
+      }
+    },
+    "enable_lock_user_code": {
+      "description": "Enables a user code on a lock.",
+      "fields": { "code_slot": { "example": 1 } }
+    },
+    "warning_device_squawk": {
+      "description": "This service uses the WD capabilities to emit a quick audible/visible pulse called a \"squawk\". The squawk command has no effect if the WD is currently active (warning in progress).",
+      "fields": {
+        "strobe": { "example": null },
+        "level": { "example": null },
+        "ieee": { "example": "00:0d:6f:00:05:7d:2d:34" },
+        "mode": { "example": null }
+      }
+    },
+    "warning_device_warn": {
+      "description": "This service starts the operation of the warning device. The warning device alerts the surrounding area by audible (siren) and visual (strobe) signals.",
+      "fields": {
+        "strobe": { "example": null },
+        "intensity": { "example": null },
+        "duration": { "example": null },
+        "mode": { "example": null },
+        "ieee": { "example": "00:0d:6f:00:05:7d:2d:34" },
+        "duty_cycle": { "example": null },
+        "level": { "example": null }
+      }
+    },
+    "disable_lock_user_code": {
+      "description": "Disables a user code on a lock.",
+      "fields": { "code_slot": { "example": 1 } }
+    }
+  },
+  "text": {
+    "set_value": {
+      "description": "Sets the value.",
+      "fields": { "value": { "example": "Hello world!" } }
+    }
+  },
+  "schedule": {
+    "reload": {
+      "description": "Reloads schedules from the YAML-configuration.",
+      "fields": {}
+    }
+  },
+  "alarm_control_panel": {
+    "alarm_arm_custom_bypass": {
+      "description": "Arms the alarm while allowing to bypass a custom area.",
+      "fields": { "code": { "example": "1234" } }
+    },
+    "alarm_arm_night": {
+      "description": "Sets the alarm to: _armed for the night_.",
+      "fields": { "code": { "example": "1234" } }
+    },
+    "alarm_arm_away": {
+      "description": "Sets the alarm to: _armed, no one home_.",
+      "fields": { "code": { "example": "1234" } }
+    },
+    "alarm_arm_home": {
+      "description": "Sets the alarm to: _armed, but someone is home_.",
+      "fields": { "code": { "example": "1234" } }
+    },
+    "alarm_arm_vacation": {
+      "description": "Sets the alarm to: _armed for vacation_.",
+      "fields": { "code": { "example": "1234" } }
+    },
+    "alarm_disarm": {
+      "description": "Disarms the alarm.",
+      "fields": { "code": { "example": "1234" } }
+    },
+    "alarm_trigger": {
+      "description": "Enables an external alarm trigger.",
+      "fields": { "code": { "example": "1234" } }
+    }
+  },
+  "input_boolean": {
+    "turn_off": { "description": "Turns off the helper.", "fields": {} },
+    "toggle": { "description": "Toggles the helper on/off.", "fields": {} },
+    "turn_on": { "description": "Turns on the helper.", "fields": {} },
+    "reload": {
+      "description": "Reloads helpers from the YAML-configuration.",
+      "fields": {}
+    }
+  },
+  "notify": {
+    "tibber": {
+      "description": "Sends a notification message using the tibber service.",
+      "fields": {
+        "target": { "example": "platform specific" },
+        "title": { "example": "Your Garage Door Friend" },
+        "data": { "example": "platform specific" },
+        "message": {
+          "example": "The garage door has been open for 10 minutes."
+        }
+      }
+    },
+    "mobile_app_sm_t820": {
+      "description": "Sends a notification message using the mobile_app_sm_t820 integration.",
+      "fields": {
+        "target": { "example": "platform specific" },
+        "data": { "example": "platform specific" },
+        "title": { "example": "Your Garage Door Friend" },
+        "message": {
+          "example": "The garage door has been open for 10 minutes."
+        }
+      }
+    },
+    "mobile_app_linus_iphone": {
+      "description": "Sends a notification message using the mobile_app_linus_iphone integration.",
+      "fields": {
+        "message": {
+          "example": "The garage door has been open for 10 minutes."
+        },
+        "title": { "example": "Your Garage Door Friend" },
+        "data": { "example": "platform specific" },
+        "target": { "example": "platform specific" }
+      }
+    },
+    "mobile_app_linuss_mac_mini": {
+      "description": "Sends a notification message using the mobile_app_linuss_mac_mini integration.",
+      "fields": {
+        "title": { "example": "Your Garage Door Friend" },
+        "data": { "example": "platform specific" },
+        "message": {
+          "example": "The garage door has been open for 10 minutes."
+        },
+        "target": { "example": "platform specific" }
+      }
+    },
+    "mobile_app_iphone_4": {
+      "description": "Sends a notification message using the mobile_app_iphone_4 integration.",
+      "fields": {
+        "data": { "example": "platform specific" },
+        "target": { "example": "platform specific" },
+        "title": { "example": "Your Garage Door Friend" },
+        "message": {
+          "example": "The garage door has been open for 10 minutes."
+        }
+      }
+    },
+    "notify": {
+      "description": "Sends a notification message using the notify service.",
+      "fields": {
+        "data": { "example": "platform specific" },
+        "message": {
+          "example": "The garage door has been open for 10 minutes."
+        },
+        "title": { "example": "Your Garage Door Friend" },
+        "target": { "example": "platform specific" }
+      }
+    },
+    "persistent_notification": {
+      "description": "Sends a notification that is visible in the **Notifications** panel.",
+      "fields": {
+        "message": {
+          "example": "The garage door has been open for 10 minutes."
+        },
+        "data": { "example": "platform specific" },
+        "title": { "example": "Your Garage Door Friend" }
+      }
+    },
+    "mobile_app_asus_z01gd": {
+      "description": "Sends a notification message using the mobile_app_asus_z01gd integration.",
+      "fields": {
+        "target": { "example": "platform specific" },
+        "message": {
+          "example": "The garage door has been open for 10 minutes."
+        },
+        "title": { "example": "Your Garage Door Friend" },
+        "data": { "example": "platform specific" }
+      }
+    }
+  },
+  "counter": {
+    "increment": { "description": "Increments a counter.", "fields": {} },
+    "reset": { "description": "Resets a counter.", "fields": {} },
+    "decrement": { "description": "Decrements a counter.", "fields": {} },
+    "set_value": {
+      "description": "Sets the counter value.",
+      "fields": { "value": { "example": null } }
+    }
+  },
+  "homeassistant": {
+    "turn_off": {
+      "description": "Generic service to turn devices off under any domain.",
+      "fields": {}
+    },
+    "check_config": {
+      "description": "Checks the Home Assistant YAML-configuration files for errors. Errors will be shown in the Home Assistant logs.",
+      "fields": {}
+    },
+    "reload_all": {
+      "description": "Reload all YAML configuration that can be reloaded without restarting Home Assistant.",
+      "fields": {}
+    },
+    "reload_config_entry": {
+      "description": "Reloads the specified config entry.",
+      "fields": {
+        "entry_id": { "example": "8955375327824e14ba89e4b29cc3ec9a" }
+      }
+    },
+    "save_persistent_states": {
+      "description": "Saves the persistent states immediately. Maintains the normal periodic saving interval.",
+      "fields": {}
+    },
+    "restart": { "description": "Restarts Home Assistant.", "fields": {} },
+    "set_location": {
+      "description": "Updates the Home Assistant location.",
+      "fields": {
+        "latitude": { "example": 32.87336 },
+        "longitude": { "example": 117.22743 },
+        "elevation": { "example": 120 }
+      }
+    },
+    "update_entity": {
+      "description": "Forces one or more entities to update its data.",
+      "fields": {}
+    },
+    "turn_on": {
+      "description": "Generic service to turn devices on under any domain.",
+      "fields": {}
+    },
+    "stop": { "description": "Stops Home Assistant.", "fields": {} },
+    "reload_core_config": {
+      "description": "Reloads the core configuration from the YAML-configuration.",
+      "fields": {}
+    },
+    "reload_custom_templates": {
+      "description": "Reloads Jinja2 templates found in the `custom_templates` folder in your config. New values will be applied on the next render of the template.",
+      "fields": {}
+    },
+    "toggle": {
+      "description": "Generic service to toggle devices on/off under any domain.",
+      "fields": {}
+    }
+  },
+  "mqtt": {
+    "publish": {
+      "description": "Publishes a message to an MQTT topic.",
+      "fields": {
+        "qos": { "example": null },
+        "retain": { "example": null },
+        "payload_template": { "example": "{{ states('sensor.temperature') }}" },
+        "topic": { "example": "/homeassistant/hello" },
+        "payload": { "example": "This is great" }
+      }
+    },
+    "reload": {
+      "description": "Reloads MQTT entities from the YAML-configuration.",
+      "fields": {}
+    },
+    "dump": {
+      "description": "Writes all messages on a specific topic into the `mqtt_dump.txt` file in your configuration folder.",
+      "fields": {
+        "topic": { "example": "OpenZWave/#" },
+        "duration": { "example": null }
+      }
+    }
+  },
+  "light": {
+    "turn_on": {
+      "description": "Turn on one or more lights and adjust properties of the light, even when they are turned on already.",
+      "fields": {
+        "hs_color": { "example": "[300, 70]" },
+        "color_temp": { "example": null },
+        "kelvin": { "example": null },
+        "transition": { "example": null },
+        "color_name": { "example": null },
+        "rgbww_color": { "example": "[255, 100, 100, 50, 70]" },
+        "brightness": { "example": null },
+        "brightness_pct": { "example": null },
+        "effect": { "example": null },
+        "profile": { "example": "relax" },
+        "rgb_color": { "example": null },
+        "white": { "example": null },
+        "xy_color": { "example": "[0.52, 0.43]" },
+        "brightness_step_pct": { "example": null },
+        "rgbw_color": { "example": "[255, 100, 100, 50]" },
+        "flash": { "example": null },
+        "brightness_step": { "example": null }
+      }
+    },
+    "toggle": {
+      "description": "Toggles one or more lights, from on to off, or, off to on, based on their current state.",
+      "fields": {
+        "xy_color": { "example": "[0.52, 0.43]" },
+        "color_name": { "example": null },
+        "rgb_color": { "example": "[255, 100, 100]" },
+        "transition": { "example": null },
+        "brightness": { "example": null },
+        "white": { "example": null },
+        "effect": { "example": null },
+        "flash": { "example": null },
+        "hs_color": { "example": "[300, 70]" },
+        "kelvin": { "example": null },
+        "profile": { "example": "relax" },
+        "color_temp": { "example": null },
+        "brightness_pct": { "example": null }
+      }
+    },
+    "turn_off": {
+      "description": "Turn off one or more lights.",
+      "fields": {
+        "transition": { "example": null },
+        "flash": { "example": null }
+      }
+    }
+  },
+  "cast": {
+    "show_lovelace_view": {
+      "description": "Shows a dashboard view on a Chromecast device.",
+      "fields": {
+        "dashboard_path": { "example": "lovelace-cast" },
+        "entity_id": { "example": null },
+        "view_path": { "example": "downstairs" }
+      }
+    }
+  },
+  "frontend": {
+    "reload_themes": {
+      "description": "Reloads themes from the YAML-configuration.",
+      "fields": {}
+    },
+    "set_theme": {
+      "description": "Sets the default theme Home Assistant uses. Can be overridden by a user.",
+      "fields": {
+        "mode": { "example": null },
+        "name": { "example": "default" }
+      }
+    }
+  },
+  "calendar": {
+    "create_event": {
+      "description": "Adds a new calendar event.",
+      "fields": {
+        "start_date_time": { "example": "2022-03-22 20:00:00" },
+        "description": {
+          "example": "Meeting to provide technical review for 'Phoenix' design."
+        },
+        "end_date": { "example": "2022-03-23" },
+        "end_date_time": { "example": "2022-03-22 22:00:00" },
+        "start_date": { "example": "2022-03-22" },
+        "in": { "example": "{\"days\": 2} or {\"weeks\": 2}" },
+        "summary": { "example": "Department Party" },
+        "location": { "example": "Conference Room - F123, Bldg. 002" }
+      }
+    },
+    "get_events": {
+      "description": "Get events on a calendar within a time range.",
+      "fields": {
+        "duration": { "example": null },
+        "start_date_time": { "example": "2022-03-22 20:00:00" },
+        "end_date_time": { "example": "2022-03-22 22:00:00" }
+      }
+    },
+    "list_events": {
+      "description": "Lists events on a calendar within a time range.",
+      "fields": {
+        "duration": { "example": null },
+        "start_date_time": { "example": "2022-03-22 20:00:00" },
+        "end_date_time": { "example": "2022-03-22 22:00:00" }
+      }
+    }
+  },
+  "water_heater": {
+    "set_operation_mode": {
+      "description": "Sets the operation mode.",
+      "fields": { "operation_mode": { "example": "eco" } }
+    },
+    "set_temperature": {
+      "description": "Sets the target temperature.",
+      "fields": {
+        "operation_mode": { "example": "eco" },
+        "temperature": { "example": null }
+      }
+    },
+    "set_away_mode": {
+      "description": "Turns away mode on/off.",
+      "fields": { "away_mode": { "example": null } }
+    },
+    "turn_off": { "description": "Turns water heater off.", "fields": {} },
+    "turn_on": { "description": "Turns water heater on.", "fields": {} }
+  },
+  "recorder": {
+    "purge": {
+      "description": "Starts purge task - to clean up old data from your database.",
+      "fields": {
+        "apply_filter": { "example": null },
+        "keep_days": { "example": null },
+        "repack": { "example": null }
+      }
+    },
+    "disable": {
+      "description": "Stops the recording of events and state changes.",
+      "fields": {}
+    },
+    "purge_entities": {
+      "description": "Starts a purge task to remove the data related to specific entities from your database.",
+      "fields": {
+        "entity_globs": { "example": "domain*.object_id*" },
+        "domains": { "example": "sun" },
+        "keep_days": { "example": null }
+      }
+    },
+    "enable": {
+      "description": "Starts the recording of events and state changes.",
+      "fields": {}
+    }
+  },
+  "siren": {
+    "turn_on": {
+      "description": "Turns the siren on.",
+      "fields": {
+        "tone": { "example": "fire" },
+        "duration": { "example": 15 },
+        "volume_level": { "example": 0.5 }
+      }
+    },
+    "toggle": { "description": "Toggles the siren on/off.", "fields": {} },
+    "turn_off": { "description": "Turns the siren off.", "fields": {} }
+  },
+  "camera": {
+    "record": {
+      "description": "Creates a recording of a live camera feed.",
+      "fields": {
+        "filename": { "example": "/tmp/snapshot_{{ entity_id.name }}.mp4" },
+        "duration": { "example": null },
+        "lookback": { "example": null }
+      }
+    },
+    "turn_off": { "description": "Turns off the camera.", "fields": {} },
+    "play_stream": {
+      "description": "Plays the camera stream on a supported media player.",
+      "fields": {
+        "media_player": { "example": null },
+        "format": { "example": null }
+      }
+    },
+    "disable_motion_detection": {
+      "description": "Disables the motion detection.",
+      "fields": {}
+    },
+    "turn_on": { "description": "Turns on the camera.", "fields": {} },
+    "snapshot": {
+      "description": "Takes a snapshot from a camera.",
+      "fields": {
+        "filename": { "example": "/tmp/snapshot_{{ entity_id.name }}.jpg" }
+      }
+    },
+    "enable_motion_detection": {
+      "description": "Enables the motion detection.",
+      "fields": {}
+    }
+  },
+  "weather": {
+    "get_forecast": {
+      "description": "Get weather forecast.",
+      "fields": { "type": { "example": null } }
+    },
+    "get_forecasts": {
+      "description": "Get weather forecasts.",
+      "fields": { "type": { "example": null } }
+    }
+  },
+  "conversation": {
+    "process": {
+      "description": "Launches a conversation from a transcribed text.",
+      "fields": {
+        "language": { "example": "NL" },
+        "agent_id": { "example": "homeassistant" },
+        "text": { "example": "Turn all lights on" }
+      }
+    },
+    "reload": {
+      "description": "Reloads the intent configuration.",
+      "fields": {
+        "language": { "example": "NL" },
+        "agent_id": { "example": "homeassistant" }
+      }
+    }
+  },
+  "hassio": {
+    "addon_restart": {
+      "description": "Restarts an add-on.",
+      "fields": { "addon": { "example": "core_ssh" } }
+    },
+    "addon_stdin": {
+      "description": "Writes data to add-on stdin.",
+      "fields": { "addon": { "example": "core_ssh" } }
+    },
+    "backup_partial": {
+      "description": "Creates a partial backup.",
+      "fields": {
+        "homeassistant_exclude_database": { "example": null },
+        "name": { "example": "Partial backup 1" },
+        "homeassistant": { "example": null },
+        "password": { "example": "password" },
+        "folders": { "example": ["homeassistant", "share"] },
+        "location": { "example": "my_backup_mount" },
+        "compressed": { "example": null },
+        "addons": { "example": ["core_ssh", "core_samba", "core_mosquitto"] }
+      }
+    },
+    "backup_full": {
+      "description": "Creates a full backup.",
+      "fields": {
+        "homeassistant_exclude_database": { "example": null },
+        "compressed": { "example": null },
+        "location": { "example": "my_backup_mount" },
+        "name": { "example": "Backup 1" },
+        "password": { "example": "password" }
+      }
+    },
+    "addon_stop": {
+      "description": "Stops an add-on.",
+      "fields": { "addon": { "example": "core_ssh" } }
+    },
+    "addon_update": {
+      "description": "Updates an add-on. This service should be used with caution since add-on updates can contain breaking changes. It is highly recommended that you review release notes/change logs before updating an add-on.",
+      "fields": { "addon": { "example": "core_ssh" } }
+    },
+    "host_shutdown": {
+      "description": "Powers off the host system.",
+      "fields": {}
+    },
+    "restore_full": {
+      "description": "Restores from full backup.",
+      "fields": {
+        "password": { "example": "password" },
+        "slug": { "example": null }
+      }
+    },
+    "restore_partial": {
+      "description": "Restores from a partial backup.",
+      "fields": {
+        "password": { "example": "password" },
+        "slug": { "example": null },
+        "folders": { "example": ["homeassistant", "share"] },
+        "homeassistant": { "example": null },
+        "addons": { "example": ["core_ssh", "core_samba", "core_mosquitto"] }
+      }
+    },
+    "addon_start": {
+      "description": "Starts an add-on.",
+      "fields": { "addon": { "example": "core_ssh" } }
+    },
+    "host_reboot": { "description": "Reboots the host system.", "fields": {} }
+  },
+  "climate": {
+    "set_fan_mode": {
+      "description": "Sets fan operation mode.",
+      "fields": { "fan_mode": { "example": "low" } }
+    },
+    "set_aux_heat": {
+      "description": "Turns auxiliary heater on/off.",
+      "fields": { "aux_heat": { "example": null } }
+    },
+    "set_preset_mode": {
+      "description": "Sets preset mode.",
+      "fields": { "preset_mode": { "example": "away" } }
+    },
+    "set_temperature": {
+      "description": "Sets target temperature.",
+      "fields": {
+        "hvac_mode": { "example": null },
+        "target_temp_high": { "example": null },
+        "target_temp_low": { "example": null },
+        "temperature": { "example": null }
+      }
+    },
+    "set_humidity": {
+      "description": "Sets target humidity.",
+      "fields": { "humidity": { "example": null } }
+    },
+    "set_hvac_mode": {
+      "description": "Sets HVAC operation mode.",
+      "fields": { "hvac_mode": { "example": null } }
+    },
+    "turn_on": { "description": "Turns climate device on.", "fields": {} },
+    "turn_off": { "description": "Turns climate device off.", "fields": {} },
+    "set_swing_mode": {
+      "description": "Sets swing operation mode.",
+      "fields": { "swing_mode": { "example": "horizontal" } }
+    }
+  },
+  "logger": {
+    "set_level": {
+      "description": "Sets the log level for one or more integrations.",
+      "fields": {}
+    },
+    "set_default_level": {
+      "description": "Sets the default log level for integrations.",
+      "fields": { "level": { "example": null } }
+    }
+  },
+  "cover": {
+    "set_cover_position": {
+      "description": "Moves a cover to a specific position.",
+      "fields": { "position": { "example": null } }
+    },
+    "open_cover": { "description": "Opens a cover.", "fields": {} },
+    "toggle_cover_tilt": {
+      "description": "Toggles a cover tilt open/closed.",
+      "fields": {}
+    },
+    "close_cover": { "description": "Closes a cover.", "fields": {} },
+    "set_cover_tilt_position": {
+      "description": "Moves a cover tilt to a specific position.",
+      "fields": { "tilt_position": { "example": null } }
+    },
+    "close_cover_tilt": {
+      "description": "Tilts a cover to close.",
+      "fields": {}
+    },
+    "stop_cover": { "description": "Stops the cover movement.", "fields": {} },
+    "stop_cover_tilt": {
+      "description": "Stops a tilting cover movement.",
+      "fields": {}
+    },
+    "toggle": { "description": "Toggles a cover open/closed.", "fields": {} },
+    "open_cover_tilt": { "description": "Tilts a cover open.", "fields": {} }
+  },
+  "watchman": {
+    "report": {
+      "description": "Run watchman report",
+      "fields": {
+        "chunk_size": { "example": true },
+        "create_file": { "example": true },
+        "parse_config": { "example": true },
+        "data": { "example": "parse_mode: html" },
+        "service": { "example": "notify.telegram" },
+        "send_notification": { "example": true }
+      }
+    }
+  },
+  "number": {
+    "set_value": {
+      "description": "Sets the value of a number.",
+      "fields": { "value": { "example": 42 } }
+    }
+  },
+  "scene": {
+    "apply": {
+      "description": "Activates a scene with configuration.",
+      "fields": {
+        "entities": {
+          "example": "light.kitchen: \"on\"\nlight.ceiling:\n  state: \"on\"\n  brightness: 80\n"
+        },
+        "transition": { "example": null }
+      }
+    },
+    "reload": {
+      "description": "Reloads the scenes from the YAML-configuration.",
+      "fields": {}
+    },
+    "create": {
+      "description": "Creates a new scene.",
+      "fields": {
+        "entities": {
+          "example": "light.tv_back_light: \"on\"\nlight.ceiling:\n  state: \"on\"\n  brightness: 200\n"
+        },
+        "scene_id": { "example": "all_lights" },
+        "snapshot_entities": { "example": "- light.ceiling\n- light.kitchen\n" }
+      }
+    },
+    "turn_on": {
+      "description": "Activates a scene.",
+      "fields": { "transition": { "example": null } }
+    },
+    "delete": {
+      "description": "Deletes a dynamically created scene.",
+      "fields": {}
+    }
+  },
+  "lawn_mower": {
+    "dock": {
+      "description": "Stops the mowing task and returns to the dock.",
+      "fields": {}
+    },
+    "start_mowing": { "description": "Starts the mowing task.", "fields": {} },
+    "pause": { "description": "Pauses the mowing task.", "fields": {} }
+  },
+  "extended_openai_conversation": {
+    "query_image": {
+      "description": "Take in images and answer questions about them",
+      "fields": {
+        "config_entry": { "example": null },
+        "images": {
+          "example": "{\"url\": \"https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Gfp-wisconsin-madison-the-nature-boardwalk.jpg/2560px-Gfp-wisconsin-madison-the-nature-boardwalk.jpg\"}"
+        },
+        "model": { "example": "gpt-4-vision-preview" },
+        "prompt": { "example": "What’s in this image?" },
+        "max_tokens": { "example": "300" }
+      }
+    }
+  },
+  "lock": {
+    "open": {
+      "description": "Opens a lock.",
+      "fields": { "code": { "example": 1234 } }
+    },
+    "lock": {
+      "description": "Locks a lock.",
+      "fields": { "code": { "example": 1234 } }
+    },
+    "unlock": {
+      "description": "Unlocks a lock.",
+      "fields": { "code": { "example": 1234 } }
+    }
+  },
+  "input_datetime": {
+    "reload": {
+      "description": "Reloads helpers from the YAML-configuration.",
+      "fields": {}
+    },
+    "set_datetime": {
+      "description": "Sets the date and/or time.",
+      "fields": {
+        "timestamp": { "example": null },
+        "datetime": { "example": "\"2019-04-20 05:04:20\"" },
+        "date": { "example": "\"2019-04-20\"" },
+        "time": { "example": "\"05:04:20\"" }
+      }
+    }
+  },
+  "input_text": {
+    "reload": {
+      "description": "Reloads helpers from the YAML-configuration.",
+      "fields": {}
+    },
+    "set_value": {
+      "description": "Sets the value.",
+      "fields": { "value": { "example": "This is an example text" } }
+    }
+  },
+  "device_tracker": {
+    "see": {
+      "description": "Records a seen tracked device.",
+      "fields": {
+        "location_name": { "example": "home" },
+        "battery": { "example": null },
+        "gps": { "example": "[51.509802, -0.086692]" },
+        "dev_id": { "example": "phonedave" },
+        "mac": { "example": "FF:FF:FF:FF:FF:FF" },
+        "gps_accuracy": { "example": null },
+        "host_name": { "example": "Dave" }
+      }
+    }
+  },
+  "rest": {
+    "reload": {
+      "description": "Reloads REST entities from the YAML-configuration.",
+      "fields": {}
+    }
+  },
+  "script": {
+    "turn_on": {
+      "description": "Runs the sequence of actions defined in a script.",
+      "fields": {}
+    },
+    "hello": { "description": "", "fields": {} },
+    "reload": {
+      "description": "Reloads all the available scripts.",
+      "fields": {}
+    },
+    "turn_off": { "description": "Stops a running script.", "fields": {} },
+    "toggle": {
+      "description": "Toggle a script. Starts it, if isn't running, stops it otherwise.",
+      "fields": {}
+    }
+  },
+  "shopping_list": {
+    "complete_item": {
+      "description": "Marks the first item with matching name as completed in the shopping list.",
+      "fields": { "name": { "example": "Beer" } }
+    },
+    "remove_item": {
+      "description": "Removes the first item with matching name from the shopping list.",
+      "fields": { "name": { "example": "Beer" } }
+    },
+    "sort": {
+      "description": "Sorts all items by name in the shopping list.",
+      "fields": { "reverse": { "example": null } }
+    },
+    "incomplete_item": {
+      "description": "Marks the first item with matching name as incomplete in the shopping list.",
+      "fields": { "name": { "example": "Beer" } }
+    },
+    "incomplete_all": {
+      "description": "Marks all items as incomplete in the shopping list.",
+      "fields": {}
+    },
+    "clear_completed_items": {
+      "description": "Clears completed items from the shopping list.",
+      "fields": {}
+    },
+    "complete_all": {
+      "description": "Marks all items as completed in the shopping list (without removing them from the list).",
+      "fields": {}
+    },
+    "add_item": {
+      "description": "Adds an item to the shopping list.",
+      "fields": { "name": { "example": "Beer" } }
+    }
+  },
+  "todo": {
+    "add_item": {
+      "description": "Add a new to-do list item.",
+      "fields": {
+        "due_date": { "example": "2023-11-17" },
+        "description": {
+          "example": "A more complete description of the to-do item than that provided by the summary."
+        },
+        "item": { "example": "Submit income tax return" },
+        "due_datetime": { "example": "2023-11-17 13:30:00" }
+      }
+    },
+    "get_items": {
+      "description": "Get items on a to-do list.",
+      "fields": { "status": { "example": "needs_action" } }
+    },
+    "remove_completed_items": {
+      "description": "Remove all to-do list items that have been completed.",
+      "fields": {}
+    },
+    "remove_item": {
+      "description": "Remove an existing to-do list item by its name.",
+      "fields": { "item": { "example": null } }
+    },
+    "update_item": {
+      "description": "Update an existing to-do list item based on its name.",
+      "fields": {
+        "description": {
+          "example": "A more complete description of the to-do item than that provided by the summary."
+        },
+        "rename": { "example": "Something else" },
+        "status": { "example": "needs_action" },
+        "due_date": { "example": "2023-11-17" },
+        "item": { "example": "Submit income tax return" },
+        "due_datetime": { "example": "2023-11-17 13:30:00" }
+      }
+    }
+  },
+  "update": {
+    "clear_skipped": {
+      "description": "Removes the skipped version marker from an update.",
+      "fields": {}
+    },
+    "install": {
+      "description": "Installs an update for this device or service.",
+      "fields": {
+        "version": { "example": "1.0.0" },
+        "backup": { "example": null }
+      }
+    },
+    "skip": {
+      "description": "Marks currently available update as skipped.",
+      "fields": {}
+    }
+  },
+  "homekit": {
+    "reload": {
+      "description": "Reloads homekit and re-process YAML-configuration.",
+      "fields": {}
+    },
+    "unpair": {
+      "description": "Forcefully removes all pairings from an accessory to allow re-pairing. Use this service if the accessory is no longer responsive, and you want to avoid deleting and re-adding the entry. Room locations, and accessory preferences will be lost.",
+      "fields": {}
+    },
+    "reset_accessory": {
+      "description": "Resets a HomeKit accessory.",
+      "fields": {}
+    }
+  },
+  "template": {
+    "reload": {
+      "description": "Reloads template entities from the YAML-configuration.",
+      "fields": {}
+    }
+  },
+  "logbook": {
+    "log": {
+      "description": "Creates a custom entry in the logbook.",
+      "fields": {
+        "name": { "example": "Kitchen" },
+        "domain": { "example": "light" },
+        "entity_id": { "example": null },
+        "message": { "example": "is being used" }
+      }
+    }
+  },
+  "input_number": {
+    "reload": {
+      "description": "Reloads helpers from the YAML-configuration.",
+      "fields": {}
+    },
+    "increment": {
+      "description": "Increments the value by 1 step.",
+      "fields": {}
+    },
+    "decrement": {
+      "description": "Decrements the current value by 1 step.",
+      "fields": {}
+    },
+    "set_value": {
+      "description": "Sets the value.",
+      "fields": { "value": { "example": null } }
+    }
+  },
+  "switch": {
+    "toggle": { "description": "Toggles a switch on/off.", "fields": {} },
+    "turn_off": { "description": "Turns a switch off.", "fields": {} },
+    "turn_on": { "description": "Turns a switch on.", "fields": {} }
+  },
+  "humidifier": {
+    "set_mode": {
+      "description": "Sets the humidifier operation mode.",
+      "fields": { "mode": { "example": "away" } }
+    },
+    "set_humidity": {
+      "description": "Sets the target humidity.",
+      "fields": { "humidity": { "example": null } }
+    },
+    "turn_on": { "description": "Turns the humidifier on.", "fields": {} },
+    "toggle": { "description": "Toggles the humidifier on/off.", "fields": {} },
+    "turn_off": { "description": "Turns the humidifier off.", "fields": {} }
+  },
+  "media_player": {
+    "repeat_set": {
+      "description": "Playback mode that plays the media in a loop.",
+      "fields": { "repeat": { "example": null } }
+    },
+    "media_stop": { "description": "Stops playing.", "fields": {} },
+    "select_source": {
+      "description": "Sends the media player the command to change input source.",
+      "fields": { "source": { "example": "video1" } }
+    },
+    "media_seek": {
+      "description": "Allows you to go to a different part of the media that is currently playing.",
+      "fields": { "seek_position": { "example": null } }
+    },
+    "media_next_track": {
+      "description": "Selects the next track.",
+      "fields": {}
+    },
+    "media_play": { "description": "Starts playing.", "fields": {} },
+    "turn_off": {
+      "description": "Turns off the power of the media player.",
+      "fields": {}
+    },
+    "turn_on": {
+      "description": "Turns on the power of the media player.",
+      "fields": {}
+    },
+    "toggle": { "description": "Toggles a media player on/off.", "fields": {} },
+    "shuffle_set": {
+      "description": "Playback mode that selects the media in randomized order.",
+      "fields": { "shuffle": { "example": null } }
+    },
+    "volume_down": { "description": "Turns down the volume.", "fields": {} },
+    "volume_set": {
+      "description": "Sets the volume level.",
+      "fields": { "volume_level": { "example": null } }
+    },
+    "clear_playlist": { "description": "Clears the playlist.", "fields": {} },
+    "select_sound_mode": {
+      "description": "Selects a specific sound mode.",
+      "fields": { "sound_mode": { "example": "Music" } }
+    },
+    "volume_up": { "description": "Turns up the volume.", "fields": {} },
+    "play_media": {
+      "description": "Starts playing specified media.",
+      "fields": {
+        "announce": { "example": "true" },
+        "enqueue": { "example": null },
+        "media_content_id": {
+          "example": "https://home-assistant.io/images/cast/splash.png"
+        },
+        "media_content_type": { "example": "music" }
+      }
+    },
+    "media_play_pause": { "description": "Toggles play/pause.", "fields": {} },
+    "unjoin": {
+      "description": "Removes the player from a group. Only works on platforms which support player groups.",
+      "fields": {}
+    },
+    "join": {
+      "description": "Groups media players together for synchronous playback. Only works on supported multiroom audio systems.",
+      "fields": {
+        "group_members": {
+          "example": "- media_player.multiroom_player2\n- media_player.multiroom_player3\n"
+        }
+      }
+    },
+    "media_pause": { "description": "Pauses.", "fields": {} },
+    "media_previous_track": {
+      "description": "Selects the previous track.",
+      "fields": {}
+    },
+    "volume_mute": {
+      "description": "Mutes or unmutes the media player.",
+      "fields": { "is_volume_muted": { "example": null } }
+    }
+  },
+  "button": {
+    "press": { "description": "Press the button entity.", "fields": {} }
+  },
+  "zone": {
+    "reload": {
+      "description": "Reloads zones from the YAML-configuration.",
+      "fields": {}
+    }
+  },
+  "system_log": {
+    "write": {
+      "description": "Write log entry.",
+      "fields": {
+        "message": { "example": "Something went wrong" },
+        "level": { "example": null },
+        "logger": { "example": "mycomponent.myplatform" }
+      }
+    },
+    "clear": { "description": "Clears all log entries.", "fields": {} }
+  },
+  "vacuum": {
+    "start_pause": {
+      "description": "Starts, pauses, or resumes the cleaning task.",
+      "fields": {}
+    },
+    "start": {
+      "description": "Starts or resumes the cleaning task.",
+      "fields": {}
+    },
+    "stop": { "description": "Stops the current cleaning task.", "fields": {} },
+    "pause": { "description": "Pauses the cleaning task.", "fields": {} },
+    "toggle": {
+      "description": "Toggles the vacuum cleaner on/off.",
+      "fields": {}
+    },
+    "turn_on": { "description": "Starts a new cleaning task.", "fields": {} },
+    "locate": {
+      "description": "Locates the vacuum cleaner robot.",
+      "fields": {}
+    },
+    "set_fan_speed": {
+      "description": "Sets the fan speed of the vacuum cleaner.",
+      "fields": { "fan_speed": { "example": "low" } }
+    },
+    "clean_spot": {
+      "description": "Tells the vacuum cleaner to do a spot clean-up.",
+      "fields": {}
+    },
+    "return_to_base": {
+      "description": "Tells the vacuum cleaner to return to its dock.",
+      "fields": {}
+    },
+    "turn_off": {
+      "description": "Stops the current cleaning task and returns to its dock.",
+      "fields": {}
+    },
+    "send_command": {
+      "description": "Sends a command to the vacuum cleaner.",
+      "fields": {
+        "command": { "example": "set_dnd_timer" },
+        "params": { "example": "{ \"key\": \"value\" }" }
+      }
+    }
+  },
+  "automation": {
+    "toggle": {
+      "description": "Toggles (enable / disable) an automation.",
+      "fields": {}
+    },
+    "turn_off": {
+      "description": "Disables an automation.",
+      "fields": { "stop_actions": { "example": null } }
+    },
+    "trigger": {
+      "description": "Triggers the actions of an automation.",
+      "fields": { "skip_condition": { "example": null } }
+    },
+    "reload": {
+      "description": "Reloads the automation configuration.",
+      "fields": {}
+    },
+    "turn_on": { "description": "Enables an automation.", "fields": {} }
+  },
+  "persistent_notification": {
+    "dismiss_all": {
+      "description": "Removes all notifications from the **Notifications** panel.",
+      "fields": {}
+    },
+    "create": {
+      "description": "Shows a notification on the **Notifications** panel.",
+      "fields": {
+        "title": { "example": "Test notification" },
+        "notification_id": { "example": 1234 },
+        "message": { "example": "Please check your configuration.yaml." }
+      }
+    },
+    "dismiss": {
+      "description": "Removes a notification from the **Notifications** panel.",
+      "fields": { "notification_id": { "example": 1234 } }
+    }
+  },
+  "remote": {
+    "delete_command": {
+      "description": "Deletes a command or a list of commands from the database.",
+      "fields": {
+        "command": { "example": "Mute" },
+        "device": { "example": "television" }
+      }
+    },
+    "send_command": {
+      "description": "Sends a command or a list of commands to a device.",
+      "fields": {
+        "device": { "example": "32756745" },
+        "command": { "example": "Play" },
+        "num_repeats": { "example": null },
+        "delay_secs": { "example": null },
+        "hold_secs": { "example": null }
+      }
+    },
+    "turn_off": { "description": "Turns the device off.", "fields": {} },
+    "turn_on": {
+      "description": "Sends the power on command.",
+      "fields": { "activity": { "example": "BedroomTV" } }
+    },
+    "toggle": { "description": "Toggles a device on/off.", "fields": {} },
+    "learn_command": {
+      "description": "Learns a command or a list of commands from a device.",
+      "fields": {
+        "alternative": { "example": null },
+        "command_type": { "example": null },
+        "command": { "example": "Turn on" },
+        "device": { "example": "television" },
+        "timeout": { "example": null }
+      }
+    }
+  },
+  "fan": {
+    "set_percentage": {
+      "description": "Sets the fan speed.",
+      "fields": { "percentage": { "example": null } }
+    },
+    "set_preset_mode": {
+      "description": "Sets preset mode.",
+      "fields": { "preset_mode": { "example": "auto" } }
+    },
+    "oscillate": {
+      "description": "Controls oscillatation of the fan.",
+      "fields": { "oscillating": { "example": null } }
+    },
+    "toggle": { "description": "Toggles the fan on/off.", "fields": {} },
+    "set_direction": {
+      "description": "Sets the fan rotation direction.",
+      "fields": { "direction": { "example": null } }
+    },
+    "turn_off": { "description": "Turns fan off.", "fields": {} },
+    "turn_on": {
+      "description": "Turns fan on.",
+      "fields": {
+        "percentage": { "example": null },
+        "preset_mode": { "example": "auto" }
+      }
+    },
+    "decrease_speed": {
+      "description": "Decreases the speed of the fan.",
+      "fields": { "percentage_step": { "example": null } }
+    },
+    "increase_speed": {
+      "description": "Increases the speed of the fan.",
+      "fields": { "percentage_step": { "example": null } }
+    }
+  }
+}

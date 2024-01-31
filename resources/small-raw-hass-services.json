@@ -1,0 +1,26 @@
+{
+  "light": {
+    "turn_on": {
+      "description": "Turn on one or more lights and adjust properties of the light, even when they are turned on already.",
+      "fields": {
+        "hs_color": { "example": "[300, 70]" },
+        "color_temp": { "example": null },
+        "kelvin": { "example": null },
+        "transition": { "example": null },
+        "color_name": { "example": null },
+        "rgbww_color": { "example": "[255, 100, 100, 50, 70]" },
+        "brightness": { "example": null },
+        "brightness_pct": { "example": null },
+        "effect": { "example": null },
+        "profile": { "example": "relax" },
+        "rgb_color": { "example": null },
+        "white": { "example": null },
+        "xy_color": { "example": "[0.52, 0.43]" },
+        "brightness_step_pct": { "example": null },
+        "rgbw_color": { "example": "[255, 100, 100, 50]" },
+        "flash": { "example": null },
+        "brightness_step": { "example": null }
+      }
+    }
+  }
+}

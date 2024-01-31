@@ -1,0 +1,31 @@
+{
+  "type": "function",
+  "function": {
+    "name": "light.turn_on",
+    "description": "Home Assistant service call to turn on a light",
+    "parameters": {
+      "type": "object",
+      "required": ["entity_id"],
+      "additionalProperties": false,
+      "properties": {
+        "rgb_color": { "type": "array", "items": { "type": "number" } },
+        "profile": { "example": "relax", "type": "string" },
+        "brightness_step_pct": { "type": "number" },
+        "brightness_step": { "type": "number" },
+        "brightness_pct": { "type": "number" },
+        "brightness": { "type": "number" },
+        "color_name": { "type": "string" },
+        "color_temp": { "type": "string" },
+        "transition": { "type": "number" },
+        "effect": { "type": "string" },
+        "kelvin": { "type": "number" },
+        "flash": { "type": "string" },
+        "white": { "type": "number" },
+        "entity_id": {
+          "type": "array",
+          "items": { "type": "string", "pattern": "^[a-z_]+\\.[a-z0-9_]+$" }
+        }
+      }
+    }
+  }
+}

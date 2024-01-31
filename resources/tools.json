@@ -1,0 +1,40 @@
+[
+  {
+    "type": "function",
+    "function": {
+      "name": "service",
+      "description": "Use this function to execute service of devices in Home Assistant.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "list": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "domain": {
+                  "type": "string",
+                  "enum": ["light", "switch"],
+                  "description": "The domain of the service, either 'light' or 'switch'.",
+                  "example": "light"
+                },
+                "service": {
+                  "type": "string",
+                  "enum": ["turn_on", "turn_off"],
+                  "description": "The service to be called, either 'on' or 'off'.",
+                  "example": "on"
+                },
+                "entity_id": {
+                  "type": "string",
+                  "description": "The valid entity_id of the device to control. Cannot be empty or undefined.",
+                  "example": "light.living_room"
+                }
+              },
+              "required": ["domain", "service", "entity_id"]
+            }
+          }
+        }
+      }
+    }
+  }
+]

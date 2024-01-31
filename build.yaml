@@ -1,0 +1,5 @@
+build_from: docker.io/library/amd64-addon-linus:latest
+args:
+  SUPERVISOR_TOKEN: ${SUPERVISOR_TOKEN}
+  OPENAI_API_KEY: ${OPENAI_API_KEY}
+  SOCKET_PORT: "10200"
