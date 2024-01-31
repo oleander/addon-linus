@@ -1,7 +1,8 @@
 use async_openai::types::{AssistantTools, AssistantToolsFunction};
+use tokio::io::{AsyncReadExt, AsyncWriteExt};
 use ha_ai::openai::Environment;
 use tokio::net::TcpListener;
-use tokio::io::{AsyncReadExt, AsyncWriteExt};
+use ha_ai::shared;
 
 #[tokio::main]
 async fn main() {
