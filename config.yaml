@@ -1,11 +1,13 @@
 ---
-version: 1.0.10
+version: 1.0.11
 slug: linus
 name: Linus
 description: Linus OpenAI pipeline
 url: https://github.com/oleander/ha-openai-rs
 arch: [amd64]
 init: false
+options:
+  openai_api_key: random_value
 schema:
   openai_api_key: string
 ports:
