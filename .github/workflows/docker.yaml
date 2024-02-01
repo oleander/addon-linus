@@ -32,7 +32,7 @@ jobs:
         uses: docker/metadata-action@v5
         with:
           images: ${{ env.REGISTRY }}/oleander/amd64-addon
-          flavor: latest=true suffix=-linus
+          flavor: suffix=-linus
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
