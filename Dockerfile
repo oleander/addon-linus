@@ -1,4 +1,3 @@
-FROM ghcr.io/home-assistant/home-assistant:stable as hass
 FROM rust:latest as builder
 
 ARG SUPERVISOR_TOKEN
