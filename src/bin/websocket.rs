@@ -31,14 +31,11 @@ async fn main() {
     tools.push(tool);
   }
 
-  // read /data/options.json as json
-  let options = std::fs::read_to_string("/data/options.json").expect("Error reading options");
-  let options: serde_json::Value = serde_json::from_str(&options).expect("Error parsing options");
-  println!("Loaded options: {}", options);
-  println!("Loaded {} tools", tools.len());
   println!("Supervisor token: {}", *shared::SUPERVISOR_TOKEN);
+  println!("Loaded options: {}", *shared::OPENAI_API_KEY);
   println!("OpenAi API key: {}", *shared::OPENAI_API_KEY);
   println!("Socket port: {}", *shared::SOCKET_PORT);
+  println!("Loaded {} tools", tools.len());
 
   let instructions = std::fs::read_to_string("resources/instructions.txt").expect("Error reading instructions");
   let env = Environment::new(tools, instructions);
