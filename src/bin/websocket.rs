@@ -34,7 +34,7 @@ async fn main() {
   println!("Supervisor token: {}", *shared::SUPERVISOR_TOKEN);
   println!("Loaded options: {}", *shared::OPENAI_API_KEY);
   println!("OpenAi API key: {}", *shared::OPENAI_API_KEY);
-  println!("Socket port: {}", *shared::SOCKET_PORT);
+  // println!("Socket port: {}", *shared::SOCKET_PORT);
   println!("Loaded {} tools", tools.len());
 
   let instructions = std::fs::read_to_string("resources/instructions.txt").expect("Error reading instructions");
