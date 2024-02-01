@@ -1,5 +1,0 @@
-build_from: ghcr.io/oleander/addon-linus:main-X64
-args:
-  SUPERVISOR_TOKEN: ${SUPERVISOR_TOKEN}
-  OPENAI_API_KEY: ${OPENAI_API_KEY}
-  SOCKET_PORT: "10200"
