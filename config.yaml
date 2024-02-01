@@ -1,5 +1,5 @@
 ---
-version: main
+version: edge
 slug: linus
 name: Linus
 description: Linus OpenAI pipeline
