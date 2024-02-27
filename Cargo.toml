@@ -7,6 +7,9 @@ edition = "2021"
 path = "src/lib.rs"
 name = "ha_ai"
 
+
+
+
 [[bin]]
 path = "src/bin/websocket.rs"
 name = "websocket"
