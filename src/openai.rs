@@ -11,11 +11,12 @@ use serde_json::{json, Value};
 use crate::shared;
 
 trait AsyncOperations {
+// not sure this is a goos idea 
   async fn initiate_run(&self, assistant: &AssistantObject, thread: &ThreadObject, question: &str) -> Result<RunObject>;
   async fn create_assistant(&self, tools: &[AssistantTools], instructions: &str) -> Result<AssistantObject>;
   async fn handle_tool_call(&self, tool_call: &RunToolCallObject) -> Result<ToolsOutputs>;
   async fn event_loop(&self, thread: &ThreadObject, run: &RunObject) -> Result<String>;
-  async fn clean_up(&self, thread: &ThreadObject) -> Result<()>;
+  async fn clean_up(&self, xthread: &ThreadObject) -> Result<()>;
   async fn create_thread(&self) -> Result<ThreadObject>;
   async fn handle_generic_tool_call(&self, tool_call: &RunToolCallObject) -> Result<ToolsOutputs>;
   async fn handle_multi_tool_use_parallel(&self, tool_call: &RunToolCallObject) -> Result<ToolsOutputs>;
